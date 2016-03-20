@@ -169,7 +169,7 @@ function init(){
   stage.addChild(platform[6]);
 
   // Player character setup.
-  player = new PIXI.Sprite.fromImage("https://www.goodboydigital.com/pixijs/examples/1/bunny.png");
+  player = new PIXI.Sprite.fromImage("res/bunny.png");
   player.position.x = 315;
   player.position.y = 44;
   player.anchor.x = 0.5;
