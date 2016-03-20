@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Malceore.io - Brandon T. Wood Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="platformer.js"></script>
+  <script src="pixi.js"></script>
+
+  <style>
+
+    img{
+      margin:2px;
+      width:48%;
+      height:auto;
+    }
+ 
+    .temp{
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 400;
+      src: local("Lato Regular"), local("Lato-Regular"), url("http://fonts.gstatic.com/s/lato/v11/1YwB1sO8YE1Lyjf12WNiUA.woff2") format("woff2");
+      unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+
+    .btn-lg{
+        margin: 2px;
+    }
+
+    .center{
+        width: 100%;
+        text-align:center;
+    }
+
+  </style>
+
+</head>
+<body onload="init()">
+
+<div class="container">
+
+  <div class="center">
+    <canvas id="game">
+      You can't run this game yo.
+    </canvas>
+  </div>
+
+  <div class="jumbotron" style="padding:2em;padding-top:5px; margin-left:2em;margin-right:2em;">
+    <h2>Skills <small> Ranked by proficiency and years of study. </small> </h2>
+    <p></p>
+    <div style="text-align:center; padding-left:1em; padding-right:1em;">
+
+      <button type="button" class="btn btn-default btn-md">Graphic Design</button>
+      <button type="button" class="btn btn-default btn-md">Java</button>
+      <button type="button" class="btn btn-default btn-md">OOP</button>
+      <button type="button" class="btn btn-default btn-md">HTML5</button>
+      <button type="button" class="btn btn-default btn-md">CSS</button>
+      <button type="button" class="btn btn-default btn-md">3D Modeling</button>
+      <button type="button" class="btn btn-default btn-md">Texturing</button>
+      <button type="button" class="btn btn-default btn-md">Javascript</button>
+      <button type="button" class="btn btn-default btn-md">MYSQL</button>
+      <button type="button" class="btn btn-default btn-md">Linux</button>
+      <button type="button" class="btn btn-default btn-md">Python</button>
+      <button type="button" class="btn btn-default btn-md">Animation</button>
+      <button type="button" class="btn btn-default btn-md">Agile Development</button>
+      <button type="button" class="btn btn-default btn-md">Game Design</button>
+      <button type="button" class="btn btn-default btn-md">C++</button>
+      <button type="button" class="btn btn-default btn-md">CUDA</button>
+      <button type="button" class="btn btn-default btn-md">PHP</button>
+      <button type="button" class="btn btn-default btn-md">RUBY</button>
+      <button type="button" class="btn btn-default btn-md">MongoDB</button>
+      <button type="button" class="btn btn-default btn-md">Unit Testing</button>
+      <button type="button" class="btn btn-default btn-md">ARM Assembly</button>
+      <button type="button" class="btn btn-default btn-md">Mobile Applications</button>
+      <button type="button" class="btn btn-default btn-md">Marketing</button>
+      <button type="button" class="btn btn-default btn-md">Distributed Systems</button>
+      <button type="button" class="btn btn-default btn-md">Networking</button>
+      <button type="button" class="btn btn-default btn-md">Managment</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <a href="res/knave_1.png"><img src="res/knave_1.png"></img></a>
+      <a href="res/knave_2.png"><img src="res/knave_2.png"></img></a>
+    </div>
+    <div class="col-sm-6">
+      <h1>Knave <small> Javascript, Pixi.js, Game Design</small></h1>
+      <p>All art and programming for Knave was done by Brandon over the course of a year. Knave is an Idle-RPG-Adventure game with almost 50 levels, different playable races, dozens of terrible monsters and a leveling system. </p>
+      <a href="https://github.com/malceore/knave">Source</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <a href="res/abomhim_4.png"><img src="res/abomhim_4.png"></img></a>
+      <a href="res/abomhim_1.png"><img src="res/abomhim_1.png"></img></a>
+    </div>
+    <div class="col-sm-6">
+      <h1>Abominable <small>Python, 3D Models, Panda3D</small></h1>
+      <p>Childrens 3D Platforming game made for a semester long Game Design course. Worked in a group of five using weekly Agile Sprints. Brandon assisted in Core Programming and produced all visuals. </p>
+      <a href="https://github.com/tbackus127/AbominableSnowmanGame">Source</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Images</p>
+    </div>
+    <div class="col-sm-6">
+      <h1>Quoridor <small> Java, Networking </small></h1>        
+      <p>Full featured Quoridor game completed with a group of five using Test Guided Development for a Software Engineering class. Brandon contributed heavily to the source code and unit testing.</p>
+      <a href="https://github.com/malceore/knave">Source</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <img src="res/dnd_1.png"></img>
+      <img src="res/dnd_1.png"></img>
+    </div>
+    <div class="col-sm-6">
+      <h1>D&D Assister <small>Javascript, Howler.js</small> </h1>
+      <p>A simple dice roller, loot generator, note taker and sound-board program for assisting in Dungeons and Dragons pen and paper games.</p>
+      <a href="https://github.com/malceore/dndtools">Source</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Images</p>
+    </div>
+    <div class="col-sm-6">
+      <h1>Swim a Mile Site <small> Bootstrap, Databases</small></h1>
+      <p>Brandon worked with two clients at Hospice and Palative Care to design a modern and user friendly site for their Swim a Mile for Hospice charity event. Learned to use Bootstrap for webdesign and integrated Hospice's swimmer database.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Enigma Cracker <small> C, CUDA </small></h1>
+      <p>Distrbutivly computed, multifunctional tool for simulated enciphering and deciphering of WW2 Enigma style ciphers using NVIDIA computer clusters. Created for a high performance computing project class, Brandon researched, designed and programmed on his own over the course of the semester..</p>
+    </div>
+    <div class="col-sm-6">
+      <h1>Pygmy<small> Python, Databases </small></h1>
+      <p>Simple programm for creating and managing small Databases stored in flat files that can be opened and edited in Excel. Input is designed to emulate MYSQL and be very speedy on tiny personel Databases.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Catchall <small> HTML5, RSS, MYSQL </small></h1>
+      <p>Google reader clone designed by Brandon when the site announced it was closing. Could login to MYSQL database, submit RSS feed links and have them parsed and displayed in numerous different ways.</p>
+    </div>
+    <div class="col-sm-6">
+      <h1>CLime <small>AJAX, MongoDB, Java</small></h1>
+      <p>Video Streamming site Brandon is creating from scratch, meant to be an improved user experience demo for a fictional future youtube competitor. Featured AJAX searches without stopping your current video, video previews as a multipanel storyboard and commenting on the timeline like Soundcloud.</p>
+    </div>
+  </div>
+
+  <div class="row" style="min-height:55px; text-align:center;">
+    <div class="col-sm-12">
+      <br>
+      <p><small>Rights @ Brandon T. Wood, created using Bootstrap and PIXI.js</small></p>
+    </div>
+  </div>
+
+
+</div>
+
+</body>
+</html>
+
