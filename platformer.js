@@ -26,8 +26,11 @@ document.onkeyup = function(e) { keys[e.which] = false };
 function init(){
 
   stage = new PIXI.Container();
-  renderer = PIXI.autoDetectRenderer(1000, 500, {view:document.getElementById("game")});
+  var canvas = document.getElementById("game");
+  renderer = PIXI.autoDetectRenderer(1000, 500, {view:canvas});
   renderer.backgroundColor = 0xffffff;
+  canvas.focus();
+
 
   // Lets add some title text!
   var text = new PIXI.Text("Malceore. o", {font:"70px Arial", fill:"0x333333"});
@@ -64,8 +67,29 @@ function init(){
     this.position.y += 3;
   }
   desc3.click = function(e){
-    this.text = "Contact \n\n Email: malceore@gmail.com" 
-    //window.location='mailto:malceore@gmail.com';
+
+    var banner = new PIXI.Sprite.fromImage("res/contact.png");
+    banner.position.y = 90;
+    banner.position.x = 690;
+    stage.addChild(banner);
+
+    // Sprite holding left side of banner.
+    var spriteL = new PIXI.Sprite.fromImage("res/bogurt.png");
+    spriteL.anchor.x = 0.5;
+    spriteL.anchor.y = 0.5;
+    spriteL.position.y = 108;
+    spriteL.position.x = 665;
+    stage.addChild(spriteL);
+
+    // Sprite holding the right side of banner.
+    var spriteR = new PIXI.Sprite.fromImage("res/bogurt.png");
+    spriteR.anchor.x = 0.5;
+    spriteR.anchor.y = 0.5;
+    spriteR.scale.x = -1;
+    spriteR.position.y = 108;
+    spriteR.position.x = 895;
+    stage.addChild(spriteR);	
+	
   }
   stage.addChild(desc3);
 
@@ -88,12 +112,12 @@ function init(){
   platform[1] = new PIXI.Graphics();
   platform[1].beginFill(0xe6e6e6);
   platform[1].position.x = 400;
-  platform[1].position.y = 145;
+  platform[1].position.y = 150;
   platform[1].drawRoundedRect(0, 0, 480, 55, 5);
   stage.addChild(platform[1]);
 
   var text1 = new PIXI.Text("I am a Software Engineer and Front end web developer with a \nstrong foundation in Java and agile software development.", {font:"16px Arial", fill:"0x333333"});
-  text1.position.y = 155;
+  text1.position.y = 158;
   text1.position.x = 415;
   stage.addChild(text1);
 
@@ -123,7 +147,7 @@ function init(){
   text2.position.x = 415;
   stage.addChild(text2);
 
-  // Where it tells you teh level has begun.
+  // Where it tells you the level has begun.
   level_text = new PIXI.Text("Level 1 - 1", {font:"35px Arial", fill:"0x333333"});
   level_text.position.y = 200;
   level_text.position.x = 380;
@@ -140,7 +164,7 @@ function init(){
   stage.addChild(platform[4]);
 
   // Link bar text.
-  var instr1 = new PIXI.Text("Use W, A, S and D to move bunny.", {font:"12px Arial", fill:"0x333333"});
+  var instr1 = new PIXI.Text("Use W, A, S and D to move bunny.", {font:"15px Arial", fill:"0x333333"});
   instr1.position.y = 72;
   instr1.position.x = 85;
   stage.addChild(instr1);
@@ -154,7 +178,7 @@ function init(){
   stage.addChild(platform[5]);
 
   // Second bar text.
-  var instr2 = new PIXI.Text("Press J to fire carrots, have fun.", {font:"12px Arial", fill:"0x333333"});
+  var instr2 = new PIXI.Text("Press J to fire carrots, have fun.", {font:"15px Arial", fill:"0x333333"});
   instr2.position.y = 72;
   instr2.position.x = 615;
   stage.addChild(instr2);
@@ -350,8 +374,8 @@ function bug(){
 function squid(){
 
   this.sprite = new PIXI.Sprite.fromImage("res/bogurt.png");
-  this.sprite.anchor.x = 0.5;
-  this.sprite.anchor.y = 0.5;
+  //this.sprite.anchor.x = 0.5;
+  this.sprite.anchor.y = 1.0;
   enemies.push(this.sprite);
 };
 
