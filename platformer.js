@@ -18,6 +18,11 @@ var level_text;
 var enemies = [];
 var projectiles = [];
 var keys = {};
+var rightBounds;
+var leftBounds;
+var score = 000000;
+var titleText;
+var canFire = true;
 document.onkeydown = function(e) { keys[e.which] = true };
 document.onkeyup = function(e) { keys[e.which] = false };
 
@@ -31,10 +36,23 @@ function init(){
   renderer.backgroundColor = 0xffffff;
   canvas.focus();
 
+  rightBounds = new PIXI.Graphics();
+  rightBounds.position.x = 950;
+  rightBounds.position.y = -50;
+  rightBounds.drawRoundedRect(0, 0, 50, 1100, 5);
+  rightBounds.beginFill(0xe6e6e6);
+  stage.addChild(rightBounds);
+
+  leftBounds = new PIXI.Graphics();
+  leftBounds.position.x = -20;
+  leftBounds.position.y = -50;
+  leftBounds.drawRoundedRect(0, 0, 22, 1100, 5);
+  leftBounds.beginFill(0xe6e6e6);
+  stage.addChild(leftBounds);
 
   // Lets add some title text!
-  var text = new PIXI.Text("Malceore. o", {font:"70px Arial", fill:"0x333333"});
-  stage.addChild(text);
+  titleText = new PIXI.Text("Malceore. o", {font:"70px Arial", fill:"0x333333"});
+  stage.addChild(titleText);
 
   // First description thing. REMOVED
 
@@ -67,32 +85,14 @@ function init(){
     this.position.y += 3;
   }
   desc3.click = function(e){
-
-    var banner = new PIXI.Sprite.fromImage("res/contact.png");
-    banner.position.y = 90;
-    banner.position.x = 690;
-    stage.addChild(banner);
-
-    // Sprite holding left side of banner.
-    var spriteL = new PIXI.Sprite.fromImage("res/bogurt.png");
-    spriteL.anchor.x = 0.5;
-    spriteL.anchor.y = 0.5;
-    spriteL.position.y = 108;
-    spriteL.position.x = 665;
-    stage.addChild(spriteL);
-
-    // Sprite holding the right side of banner.
-    var spriteR = new PIXI.Sprite.fromImage("res/bogurt.png");
-    spriteR.anchor.x = 0.5;
-    spriteR.anchor.y = 0.5;
-    spriteR.scale.x = -1;
-    spriteR.position.y = 108;
-    spriteR.position.x = 895;
-    stage.addChild(spriteR);	
-	
+    //var banner = new PIXI.Sprite.fromImage("res/banner_creature.png");
+    var banner = new bannner();
+    banner.sprite.position.y = 90;
+    //banner.sprite.position.x = 690;
+    banner.sprite.position.x = 1000;
+    stage.addChild(banner.sprite);	
   }
   stage.addChild(desc3);
-
 
   //Portrait graphics.
   platform[0] = new PIXI.Graphics();
@@ -183,7 +183,6 @@ function init(){
   instr2.position.x = 615;
   stage.addChild(instr2);
 
-
   // Bottom bar
   platform[6] = new PIXI.Graphics();
   platform[6].beginFill(0x333333);
@@ -219,28 +218,31 @@ function hitTest(a, b) {
 };
 
 function movePlayer(){
-
+  // Check collision with right and left bounds.
+  if(hitTest(player, rightBounds)){
+    console.log("RIGHT");
+    player.position.x = 35;
+  }else if(hitTest(player, leftBounds)){
+    console.log("LEFT");
+    player.position.x = 940;
+  }
   // Check for collisions.
   for(var i=0; platform.length>i; i++){
     if(hitTest(player, platform[i])){
-
       ONGROUND = true;
       player.vy = 0;//platform[i].position.y +1;
       break;
     }else{
-
       ONGROUND = false;
     }
   }
   // Left
   if(keys[65]) {
-
       //console.log(player.vy);
       player.vx = -3;
       player.scale.x = -1;
   // right cannot be pressed along side left.
   }else if(keys[68]) {
-
       //console.log('Right was pressed');
       player.vx = 3;
       player.scale.x = 1;
@@ -248,7 +250,6 @@ function movePlayer(){
 
       player.vx = 0;
   }
-
   // Jump
   if(keys[87] && player.vy < MAX_VY) {
       if(ONGROUND){
@@ -261,7 +262,6 @@ function movePlayer(){
 
       player.vy = 0;
   }
-
   //Down
   if(keys[83]) {
 
@@ -269,7 +269,6 @@ function movePlayer(){
       player.vy = 0;
       player.vx = 0;
   }
-
   // Move player, apply changes.
   player.position.x += player.vx;
   if(ONGROUND){
@@ -287,10 +286,8 @@ function movePlayer(){
       }
       t2++;
   }
-
   //Fire key pressed.
-  if(keys[74]){
-
+  if(keys[74] && canFire){
     var fire
     //console.log("Fire");
     if(player.scale.x == 1){
@@ -299,22 +296,25 @@ function movePlayer(){
       fire = new missleL();
     }
     stage.addChild(fire.sprite);
+    canFire = false;
+    setTimeout(function(){canFire = true}, 350);
   }
 
 
   // Wait til player gets used to controls before moving.
   if(t2 == 200){
       LEVEL++;
-  }else if(t2 == 201){
-
+  }else if(t2 == 300){
       LEVEL++;
-      //console.log("	It begins, monsters spawn.");
+      console.log("	It begins, monsters spawn.");
 
-      var monster1 = new squid();
-      monster1.sprite.position.x = -90;
+      titleText.text = "Score: " + score;
+
+      var monster1 = new bug();
+      monster1.sprite.position.x = 190;
       stage.addChild(monster1.sprite);
 
-      var monster2 = new squid();
+      var monster2 = new bug();
       monster2.sprite.position.y = 300;
       monster2.sprite.position.x = -90;
       stage.addChild(monster2.sprite);
@@ -324,7 +324,6 @@ function movePlayer(){
       monster3.sprite.position.x = 1100;
       stage.addChild(monster3.sprite);
   }
-
   // Insert win conditions for each level to increment it..
   if(enemies.length <= 0 && LEVEL > 1){
     LEVEL++;
@@ -342,45 +341,56 @@ function movePlayer(){
     monster3.sprite.position.y = 300;
     monster3.sprite.position.x = 1100;
     stage.addChild(monster3.sprite);
-
   }
-
 };
 
 function missleL(){
-
-  this.sprite = new PIXI.Text("<{|||}<", {font:"18px Arial", fill:"0xff751a"});
+  this.sprite = new PIXI.Text("<{|||}<", {font:"18px Arial", fill:"0xff3300"});
   this.sprite.position.x = player.position.x;
   this.sprite.position.y = (player.position.y-10);
   projectiles.push(this.sprite);
 };
 
 function missleR(){
-
-  this.sprite = new PIXI.Text(">{|||}>", {font:"18px Arial", fill:"0xff751a"});
+  this.sprite = new PIXI.Text(">{|||}>", {font:"18px Arial", fill:"0xff3300"});
   this.sprite.position.x = player.position.x;
   this.sprite.position.y = (player.position.y-10);
   projectiles.push(this.sprite);
 };
 
-function bug(){
-
+function bug() {
   this.sprite = new PIXI.Sprite.fromImage("res/bug.png");
+  this.name = "bug";
+  this.ONGROUND = false;
   this.sprite.anchor.x = 0.5;
-  this.sprite.anchor.y = 0.5;
-  enemies.push(this.sprite);
+  this.sprite.anchor.y = 1.0;
+  enemies.push(this);
 };
 
 function squid(){
-
   this.sprite = new PIXI.Sprite.fromImage("res/bogurt.png");
-  //this.sprite.anchor.x = 0.5;
+  //console.log(this.name);
+  this.name = "squid";
+  this.sprite.anchor.x = 0.5;
   this.sprite.anchor.y = 1.0;
-  enemies.push(this.sprite);
+  enemies.push(this);
+  //name:"squid";
 };
+
+function bannner(){
+  this.sprite = new PIXI.Sprite.fromImage("res/banner_creature.png");
+  this.name = "banner";
+  enemies.push(this);
+}
 
 function moveProj(){
   for(var i=0; i<projectiles.length; i++){
+    // Check collision with right and left bounds.
+    if(hitTest(projectiles[i], rightBounds)){
+      stage.removeChild(projectiles[i]);
+    }else if(hitTest(projectiles[i], leftBounds)){
+      stage.removeChild(projectiles[i]);
+    }
     if(projectiles[i].text == "<{|||}<"){
       projectiles[i].position.x -= 3;
     }else{
@@ -388,39 +398,59 @@ function moveProj(){
     }
     //Check if hit monster.
     for(var j=0; j<enemies.length; j++){
-      if( hitTest(projectiles[i], enemies[j]) ){
-        //console.log("hit!");
-        stage.removeChild(enemies[j]);
+      if( hitTest(projectiles[i], enemies[j].sprite) ){
+        stage.removeChild(enemies[j].sprite);
         enemies.splice(j,1);
-        //console.log(enemies);
       }
     }
   }
 };
 
-
 function checkAI(){
-
   for(var i=0; i<enemies.length; i++){
-
-    //enemies[i].position.x += 5;
     //check what type of enemy it is. comming soon, only squid now.
-    if(enemies[i].position.x < player.position.x){
-
-      enemies[i].position.x += 1;
-      enemies[i].scale.x = 1;
+    if(enemies[i].name == "bug"){
+	//console.log(enemies[i].name);
+      // If is bug do this check for in air.
+      for(var j=0; platform.length>j; j++){
+        if(hitTest(enemies[i].sprite, platform[j])){
+          enemies[i].ONGROUND = true;
+	  break;
+	}else{
+	  //enemies[i].position.y += enemies[i].vy - GRAVITY * 10;
+          //break;
+	  //enemies[i].position.y = 0; 
+          enemies[i].ONGROUND = false;
+        }
+      }
+      if(!enemies[i].ONGROUND){
+	enemies[i].sprite.position.y -= (GRAVITY * 10);
+      }
+      // Horizontal movements.
+      if(enemies[i].sprite.position.x < player.position.x){
+        enemies[i].sprite.position.x += 2;
+      }else{
+        enemies[i].sprite.position.x -= 2;
+      }
+    }else if(enemies[i].name == "squid"){
+      // If it is a squid do this!
+      if(enemies[i].sprite.position.x < player.position.x){
+        enemies[i].sprite.position.x += 1;
+        enemies[i].sprite.scale.x = 1;
+      }else{
+        enemies[i].sprite.position.x -= 1;
+        enemies[i].sprite.scale.x = -1;
+      }
+      if(enemies[i].sprite.position.y < player.position.y){
+        enemies[i].sprite.position.y += 1;
+      }else{
+        enemies[i].sprite.position.y -= 1;
+      }
     }else{
-
-      enemies[i].position.x -= 1;
-      enemies[i].scale.x = -1;
+      if(enemies[i].sprite.position.x > 750){
+        enemies[i].sprite.position.x -= 2;
+      }
     }
-
-    if(enemies[i].position.y < player.position.y){
-      enemies[i].position.y += 1;
-    }else{
-      enemies[i].position.y -= 1;
-    }
-    
   }
 };
 
@@ -439,15 +469,12 @@ function animate(){
 
   // Do level building stuff here.
   if(LEVEL == 1){
-
     //console.log("	Level 1 - 1");
     level_text.visible = true;
-  }else if(LEVEL == 3){
-
+  }else if(LEVEL == 2){
     level_text.visible = false;
     // Send in the enemies
   }
-
 
 //else if(LEVEL == 5){
     //console.log("	Level 1 - 2");
@@ -458,7 +485,6 @@ function animate(){
 
     //level_text.visible = false;
   //}
-
 
   // Render frames.
   renderer.render(stage);
