@@ -94,12 +94,12 @@ function init(){
   }
   stage.addChild(desc3);
 
-  //Portrait graphics.
+  // portrait background.
   platform[0] = new PIXI.Graphics();
   platform[0].beginFill(0xe6e6e6);
-  platform[0].position.x = 70;
+  platform[0].position.x = 90;
   platform[0].position.y = 125;
-  platform[0].drawRoundedRect(0, 0, 280, 330, 5);
+  platform[0].drawRoundedRect(0, 0, 240, 330, 5);
   stage.addChild(platform[0]);
 
   // Portrait text
@@ -107,6 +107,13 @@ function init(){
   name.position.y = 420;
   name.position.x = 109;
   stage.addChild(name);
+
+  //Portrait graphics.
+  var port = new PIXI.Sprite.fromImage("res/portrait.jpg");
+  port.scale.x = port.scale.y = 0.135;
+  port.position.y = 150;
+  port.position.x = 120;
+  stage.addChild(port);
 
   // Top three things, first
   platform[1] = new PIXI.Graphics();
