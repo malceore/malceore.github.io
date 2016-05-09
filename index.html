@@ -14,13 +14,11 @@
     .btn{
       margin-bottom:3px;
     }
-
     img{
       margin:2px;
       width:48%;
       height:auto;
     }
- 
     .temp{
       font-family: "Lato";
       font-style: normal;
@@ -28,18 +26,15 @@
       src: local("Lato Regular"), local("Lato-Regular"), url("http://fonts.gstatic.com/s/lato/v11/1YwB1sO8YE1Lyjf12WNiUA.woff2") format("woff2");
       unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
     }
-
     .row{
       margin-top:10px;
     }
-
     .btn-lg{
         margin: 2px;
     }
-
     .center{
         width: 100%;
-        text-align:center;
+        text-align: center;
     }
   </style>
 
@@ -55,10 +50,11 @@
   </div>
 
   <div class="jumbotron" style="padding:2em;padding-top:5px; margin-left:2em;margin-right:2em;">
-    <h2>Skills <small> Ranked by proficiency and years of study. </small> </h2>
+    <h2>Skills <small> Ranked by proficiency and years of study. </small> 
+      <button type="button" class="btn btn-sm btn-default pull-right" data-toggle="collapse" data-target="#skills">_</button>
+    </h2>
     <p></p>
-    <div style="text-align:center; padding-left:1em; padding-right:1em;">
-
+    <div id="skills" style="text-align:center; padding-left:1em; padding-right:1em;" class="collapse in">
       <a href="https://en.wikipedia.org/wiki/Graphic_design" class="btn btn-default btn-md">Graphic Design</a>
       <a href="http://www.studytonight.com/java/" class="btn btn-default btn-md">Java</a>
       <a href="https://en.wikipedia.org/wiki/Object-oriented_programming" class="btn btn-default btn-md">OOP</a>

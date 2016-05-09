@@ -25,14 +25,33 @@ var titleText;
 var canFire = true;
 document.onkeydown = function(e) { keys[e.which] = true };
 document.onkeyup = function(e) { keys[e.which] = false };
+// Better scaling resolution.
+var gameWidth = window.innerWidth;
+var gameHeight = window.innerHeight;
+var scaleToFitX = gameWidth / 1000;
+var scaleToFitY = gameHeight / 400;
+paused = false;
 
-
-//var stage, renderer;
 function init(){
 
   stage = new PIXI.Container();
   var canvas = document.getElementById("game");
+  // Scaling statement belongs to: https://www.davrous.com/2012/04/06/modernizing-your-html5-canvas-games-part-1-hardware-scaling-css3/
+  var optimalRatio = Math.min(scaleToFitX, scaleToFitY);
+  var currentScreenRatio = gameWidth / gameHeight;
+  if (currentScreenRatio >= 1.77 && currentScreenRatio <= 1.79) {
+    canvas.style.width = gameWidth + "px";
+    canvas.style.height = gameHeight + "px";
+    //renderer = PIXI.autoDetectRenderer(gameWidth, gameHeight, {view:canvas});
+  }
+  else {
+    canvas.style.width = 1000 * optimalRatio + "px";
+    canvas.style.height = 400 * optimalRatio + "px";
+    //renderer = PIXI.autoDetectRenderer(1000 * optimalRatio, 500 * optimalRatio, {view:canvas});
+  }
+
   renderer = PIXI.autoDetectRenderer(1000, 500, {view:canvas});
+  //renderer = PIXI.autoDetectRenderer(window.innerWidth, 500, {view:canvas});
   renderer.backgroundColor = 0xffffff;
   canvas.focus();
 
@@ -161,7 +180,6 @@ function init(){
   level_text.visible = false;
   stage.addChild(level_text);
 
-
   // Links bar 1
   platform[4] = new PIXI.Graphics();
   platform[4].beginFill(0x333333);
@@ -214,12 +232,34 @@ function init(){
   requestAnimationFrame(animate);
 };
 
-
 function hitTest(a, b) {
-  if(a.position.x < (b.position.x + b.width) && a.position.x > b.position.x){
-    if(a.position.y < (b.position.y + b.height) && a.position.y > b.position.y){
-      return true;
+
+  // If it has a child we need to change some values for hitboxes.
+  if(a.children.length != 0){
+
+    if(a.position.x + a.getChildAt(0).position.x < (b.position.x + b.width) && a.position.x + a.getChildAt(0).position.x > b.position.x){
+      if(a.position.y + a.getChildAt(0).position.y < (b.position.y + b.height) && a.position.y > b.position.y + a.getChildAt(0).position.y){
+        return true;
+      }
     }
+    //return false;
+  }else if(b.children.length != 0){
+
+    if(a.position.x < b.getChildAt(0).position.x + (b.position.x + b.width) && a.position.x > b.position.x + b.getChildAt(0).position.x){
+      if(a.position.y < (b.position.y + b.height) + b.getChildAt(0).position.y && a.position.y > b.position.y + b.getChildAt(0).position.y){
+        return true;
+      }
+    }
+    //return false;
+
+  // Else treat it normally.
+  }else{
+    if(a.position.x < (b.position.x + b.width) && a.position.x > b.position.x){
+      if(a.position.y < (b.position.y + b.height) && a.position.y > b.position.y){
+        return true;
+      }
+    }
+    //return false;
   }
   return false;
 };
@@ -254,7 +294,6 @@ function movePlayer(){
       player.vx = 3;
       player.scale.x = 1;
   } else{
-
       player.vx = 0;
   }
   // Jump
@@ -307,6 +346,13 @@ function movePlayer(){
     setTimeout(function(){canFire = true}, 350);
   }
 
+  // check if you've been touched and thus killed by enemies.
+  for(var i=0; i<enemies.length; i++){
+    if(enemies.length > -1 && hitTest(player, enemies[i].sprite)){
+      console.log("AHHHHHHH! OUCH!");
+      death();
+    }
+  }
 
   // Wait til player gets used to controls before moving.
   if(t2 == 200){
@@ -367,6 +413,13 @@ function missleR(){
 
 function bug() {
   this.sprite = new PIXI.Sprite.fromImage("res/bug.png");
+  var hitbox = new PIXI.Graphics();
+  //hitbox.lineStyle(5, 0xFF0000);
+  hitbox.drawRect(0, 0, 100, 50);
+  hitbox.position.y = -50;
+  hitbox.position.x = -50;
+  this.sprite.addChild(hitbox);
+
   this.name = "bug";
   this.ONGROUND = false;
   this.sprite.anchor.x = 0.5;
@@ -376,6 +429,14 @@ function bug() {
 
 function squid(){
   this.sprite = new PIXI.Sprite.fromImage("res/bogurt.png");
+
+  var hitbox = new PIXI.Graphics();
+  //hitbox.lineStyle(5, 0xFF0000);
+  hitbox.drawRect(0, 0, 90, 50);
+  hitbox.position.y = -50;
+  hitbox.position.x = -50;
+  this.sprite.addChild(hitbox);
+
   //console.log(this.name);
   this.name = "squid";
   this.sprite.anchor.x = 0.5;
@@ -388,7 +449,7 @@ function bannner(){
   this.sprite = new PIXI.Sprite.fromImage("res/banner_creature.png");
   this.name = "banner";
   enemies.push(this);
-}
+};
 
 function moveProj(){
   for(var i=0; i<projectiles.length; i++){
@@ -408,6 +469,7 @@ function moveProj(){
       if( hitTest(projectiles[i], enemies[j].sprite) ){
         stage.removeChild(enemies[j].sprite);
         enemies.splice(j,1);
+        score += 100;
       }
     }
   }
@@ -461,41 +523,47 @@ function checkAI(){
   }
 };
 
+function death(){
+
+  level_text.visible = true;
+  level_text.text = "GAME OVER!"
+  renderer.render(stage);
+  requestAnimationFrame(animate);
+  paused = true;  
+}
+
 
 // ---------------------- MAIN LOOP -------------------------
 function animate(){
 
-  // The above function.
-  movePlayer();
+  if(!paused){
+    // The above function.
+    movePlayer();
 
-  // Calculate AI
-  checkAI();
+    // Calculate AI
+    checkAI();
 
-  // Check movement of projectiles.
-  moveProj();
+    // Check movement of projectiles.
+    moveProj();
 
-  // Do level building stuff here.
-  if(LEVEL == 1){
-    //console.log("	Level 1 - 1");
-    level_text.visible = true;
-  }else if(LEVEL == 2){
-    level_text.visible = false;
-    // Send in the enemies
+    // Update score
+    if(LEVEL > 1){
+      titleText.text = "Score: " + score;
+    }
+
+    // Do level building stuff here.
+    if(LEVEL == 1){
+      //console.log("	Level 1 - 1");
+      level_text.visible = true;
+    }else if(LEVEL == 2){
+      level_text.visible = false;
+      // Send in the enemies
+    }
+
+    // Render frames.
+    renderer.render(stage);
+    requestAnimationFrame(animate);
   }
-
-//else if(LEVEL == 5){
-    //console.log("	Level 1 - 2");
-  //  level_text.setText("Level 1 - 2");
-    //level_text.visible = true;
-    //LEVEL++;
-  //}else if(LEVEL == 6){
-
-    //level_text.visible = false;
-  //}
-
-  // Render frames.
-  renderer.render(stage);
-  requestAnimationFrame(animate);
 };
 
 
