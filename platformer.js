@@ -28,30 +28,16 @@ document.onkeyup = function(e) { keys[e.which] = false };
 // Better scaling resolution.
 var gameWidth = window.innerWidth;
 var gameHeight = window.innerHeight;
-var scaleToFitX = gameWidth / 1000;
-var scaleToFitY = gameHeight / 400;
+var scaleToFitX = gameWidth / 1100;
+var scaleToFitY = gameHeight / 600;
 paused = false;
 
 function init(){
 
   stage = new PIXI.Container();
   var canvas = document.getElementById("game");
-  // Scaling statement belongs to: https://www.davrous.com/2012/04/06/modernizing-your-html5-canvas-games-part-1-hardware-scaling-css3/
-  var optimalRatio = Math.min(scaleToFitX, scaleToFitY);
-  var currentScreenRatio = gameWidth / gameHeight;
-  if (currentScreenRatio >= 1.77 && currentScreenRatio <= 1.79) {
-    canvas.style.width = gameWidth + "px";
-    canvas.style.height = gameHeight + "px";
-    //renderer = PIXI.autoDetectRenderer(gameWidth, gameHeight, {view:canvas});
-  }
-  else {
-    canvas.style.width = 1000 * optimalRatio + "px";
-    canvas.style.height = 400 * optimalRatio + "px";
-    //renderer = PIXI.autoDetectRenderer(1000 * optimalRatio, 500 * optimalRatio, {view:canvas});
-  }
-
   renderer = PIXI.autoDetectRenderer(1000, 500, {view:canvas});
-  //renderer = PIXI.autoDetectRenderer(window.innerWidth, 500, {view:canvas});
+  //renderer = PIXI.autoDetectRenderer(window.innerWidth, 600, {view:canvas});
   renderer.backgroundColor = 0xffffff;
   canvas.focus();
 
