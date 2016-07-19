@@ -1,0 +1,193 @@
+<html>
+
+<head>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+<style>
+.flags {
+    margin:10px;
+    border: none;
+    color: white;
+    padding: 0px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 7px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+body{
+        font-family: 'Lato', serif;
+	margin:0px;
+}
+header{
+	background-color:bfd8a6;
+	color:white;
+	padding:1em;
+	padding-top:3em;
+}
+section{
+	padding:1em;
+	background-color:white;
+	margin-top:5px;
+}
+#information{
+	padding:1em;
+	width:60%;
+	float:left;
+}
+#tools{
+        padding:1em;
+        width:35%;
+	display: inline-block;
+}
+input{
+	margin-bottom:8px;
+}
+footer{
+	background-color:8ca970;
+	text-align:center;
+	padding:1em;
+}
+</style>
+
+
+
+<script>
+
+var dic = {};
+	dic["a"]="Acoemeti";
+	dic['b']="Bacciferous";
+        dic['c']="Centuple";
+        dic['d']="Dactyloid";
+        dic['e']="Embrocate";
+        dic['f']="Felsenmeer";
+        dic['g']="Gyrus";
+        dic['h']="Halcyonine";
+        dic['i']="Ibex";
+        dic['j']="Jactation";
+        dic['k']="Kyriolexy";
+        dic['l']="Labret";
+        dic['m']="Macrotous";
+        dic['n']="Neontology";
+        dic['o']="Okapi";
+        dic['p']="Purpresture"
+        dic['q']="Quilombo";
+        dic['r']="Regardant";
+        dic['s']="Scarpines";
+        dic['t']="Tychism";
+        dic['u']="Ucalegon";
+        dic['v']="Vaporetto";
+	dic['w']="Williwaw";
+	dic['x']="Xanthous";
+	dic['y']="Ypsiliform";
+	dic['z']="Zinciferous";
+var num = 0;
+var everyOther = true;
+var symb = [	
+	//"Ω", "α", "Ç", "¥", "µ", "û", Might be too obscure.
+	"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"
+]
+
+
+function scramble(){
+
+	//Obtain your passcode.
+	console.log("Scrambling your passcode!");
+	var IO = document.getElementById('password').value;//= "new passcode";
+	var password = "";
+
+
+	//do some stuff
+	for(var i=0; i< IO.length; i++){ //>
+
+		var char = IO.charAt(i);		
+		//console.log(char + " " + dic[char]);
+		// If is a letter
+		if(isNaN(char)){
+			if(everyOther){
+
+				password = password.substring(0,(password.length/2)-1); 
+				password += symb[password.length] + "z";
+				everyOther = false; 
+                                console.log("--everyOther " + password);
+			}else{
+
+				password += dic[IO.charAt(i)];
+				everyOther = true;
+                                console.log("--regularPass " + password);
+			}
+
+		// If it IS a number.
+		}else{
+
+                        //password += dic[IO.charAt(i+num)];
+			num = parseInt(char);
+                        password += symb[num];
+                        //num = 0;
+                        console.log("--number " + password);
+		}
+	}
+
+
+	//append new passcode
+        document.getElementById('password').value = password;
+}	
+
+</script>
+
+
+
+</head>
+
+<body>
+	<header>
+		<h1>New Tab Page</h1>
+	</header>
+	<section>
+		<div id="information">
+			<a href="https://mail.google.com/mail/u/0/?pli=1#inbox" class="flags" style="background-color:4CAF50"><h4>Gmail</h4></a>
+                        <a href="http://www.youtube.com" class="flags" style="background-color:009999"><h4>Youtube</h4></a>
+			<a href="http://www.youtube.com" class="flags" style="background-color:f44336"><h4>G+</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:009933"><h4>/SGG/</h4></a>
+                        <a href="http://www.youtube.com" class="flags" style="background-color:f44336"><h4>Yahoo</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:ff9966"><h4>4Chan</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:0099ff"><h4>/Biz/</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:ff9966"><h4>/Diy/</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:99ff33"><h4>/g/</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:ff9900"><h4>/tg/</h4></a>
+                        <a href="http://www.4chan.org" class="flags" style="background-color:9933ff"><h4>/b/</h4></a>
+                        <a href="http://www.hackaday.com" class="flags" style="background-color:1c1c4a"><h4> Hackaday</h4></a><br>
+
+		</div>
+		<div id="tools">
+			<div style="padding:1em; border: 2px solid grey; margin-bottom:20px;">
+				<h3>Password Scrambler</h3>
+				<input type="name" name="password" value="" id="password"><br>
+				<!--<input type="submit" value="Submit"><br><br>-->
+				<input onclick="scramble();" type="button" class="button" value="Submit">
+			</div>
+			<div style="padding:1em;text-align:justified; border: 2px solid grey; margin-bottom:20px;">
+				<h3>Present Value Calculator</h3>
+                                <label>Interest Rate</label>   <input type="password" name="interest" value=""><br>
+                                <label>Number of Periods</label>   <input type="password" name="periods" value=""><br>
+                                <label>Future Value</label>   <input type="password" name="future" value=""><br>
+        
+                                <input type="submit" class="button" value="Submit"><br><br>
+
+			</div>
+		</div>
+	</section>
+
+	<footer> Brandon T. Wood @ 2016</footer>
+
+</html>
