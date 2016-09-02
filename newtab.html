@@ -92,22 +92,61 @@ var dic = {};
 	dic['y']="Ypsiliform";
 	dic['z']="Zinciferous";
 var num = 0;
-var everyOther = true;
+var everyOther = false;
+var alphas = false;
+var numbers = false;
+var symbols = false;
+var obscure_symbols = false;
+var size;
 var symb = [	
-	//"Ω", "α", "Ç", "¥", "µ", "û", Might be too obscure.
-	"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"
+	"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+",
+	"Ω", "α", "Ç", "¥", "µ", "û"
 ]
 
 
-function scramble(){
+function Setup(){
 
 	//Obtain your passcode.
 	console.log("Scrambling your passcode!");
 	var IO = document.getElementById('password').value;//= "new passcode";
 	var password = "";
 
+	//Obtain check boxes
+        var temp = document.getElementById('alpha');
+	if(temp.checked == true){
+		console.log("Alphas ON!");
+		alphas = true;
+	}
+	temp = document.getElementById('numeric');
+        if(temp.checked == true){
+                console.log("Numbers ON!");
+		numbers = true;
+        }
+	temp = document.getElementById('swears');
+        if(temp.checked == true){
+                console.log("Symbols ON!");
+		symbols = true;
+        }
+	/*temp = document.getElementById('ob_swears');
+        if(temp.checked == true){
+                console.log("Obscure Symbols ON!");
+                obscure_symbols = true;
+        }*/
 
-	//do some stuff
+	//Next obtain maximium size for password
+	temp = document.getElementById('length');
+        console.log("Length is " + temp.value);
+	length = parseInt(temp.value);	
+
+	temp = Scramble(password, IO);
+
+        //append new passcode
+        document.getElementById('password').value = temp;
+
+}
+
+function Scramble(password, IO){
+	//do some scrambling
 	for(var i=0; i< IO.length; i++){ //>
 
 		var char = IO.charAt(i);		
@@ -116,15 +155,21 @@ function scramble(){
 		if(isNaN(char)){
 			if(everyOther){
 
-				password = password.substring(0,(password.length/2)-1); 
-				password += symb[password.length] + "z";
-				everyOther = false; 
-                                console.log("--everyOther " + password);
+				password = password.substring(0,(password.length/2)+2);
+				if(symbols){ 
+					password += symb[password.length - 1] + "";
+				}else if(numbers){
+					password += "" + parseInt(password.charCodeAt(password.length-1));
+				}else{
+					password += "zyq";
+				}
+				everyOther = false;
+                                console.log("--everyOther " + password + ", " + IO);
 			}else{
 
 				password += dic[IO.charAt(i)];
 				everyOther = true;
-                                console.log("--regularPass " + password);
+                                console.log("--regularPass " + password + ", " + IO);
 			}
 
 		// If it IS a number.
@@ -139,13 +184,28 @@ function scramble(){
 	}
 
 
+	return fixLength(password, length);
 	//append new passcode
-        document.getElementById('password').value = password;
+        //document.getElementById('password').value = password;
 }	
+
+
+function fixLength(password, length){
+
+	if(password.length > length){
+
+                password = password.slice(0, length);
+                console.log("Passowrd too long, resized too:" + password);
+		return password
+        }else{
+                password += dic['z'];
+		return fixLength(password, length);
+        }
+}
 
 </script>
 
-
+<meta charset="ISO-8859-1"> 
 
 </head>
 
@@ -157,25 +217,56 @@ function scramble(){
 		<div id="information">
 			<a href="https://mail.google.com/mail/u/0/?pli=1#inbox" class="flags" style="background-color:4CAF50"><h4>Gmail</h4></a>
                         <a href="http://www.youtube.com" class="flags" style="background-color:009999"><h4>Youtube</h4></a>
-			<a href="https://plus.google.com/stream/circles/pddea0da8ace4324" class="flags" style="background-color:f44336"><h4>G+</h4></a>
                         <a href="https://plus.google.com/communities/116217313902733216117" class="flags" style="background-color:009933"><h4>/SGG/</h4></a>
                         <a href="http://www.yahoo.com" class="flags" style="background-color:f44336"><h4>Yahoo</h4></a>
                         <a href="http://www.4chan.org" class="flags" style="background-color:ff9966"><h4>4Chan</h4></a>
-                        <a href="http://www.4chan.org/biz" class="flags" style="background-color:0099ff"><h4>/Biz/</h4></a>
-                        <a href="http://www.4chan.org/diy" class="flags" style="background-color:ff9966"><h4>/Diy/</h4></a>
-                        <a href="http://www.4chan.org/g" class="flags" style="background-color:99ff33"><h4>/g/</h4></a>
-                        <a href="http://www.4chan.org/tg" class="flags" style="background-color:ff9900"><h4>/tg/</h4></a>
-                        <a href="http://www.4chan.org/b" class="flags" style="background-color:9933ff"><h4>/b/</h4></a>
+                        <a href="http://www.4chan.org/biz/catalog" class="flags" style="background-color:0099ff"><h4>/Biz/</h4></a>
+                        <a href="http://www.4chan.org/diy/catalog" class="flags" style="background-color:ff9966"><h4>/Diy/</h4></a>
+                        <a href="http://www.4chan.org/g/catalog" class="flags" style="background-color:99ff33"><h4>/g/</h4></a>
+                        <a href="http://www.4chan.org/tg/catalog" class="flags" style="background-color:ff9900"><h4>/tg/</h4></a>
+                        <a href="http://www.4chan.org/b/catalog" class="flags" style="background-color:9933ff"><h4>/b/</h4></a>
                         <a href="http://www.hackaday.com" class="flags" style="background-color:1c1c4a"><h4> Hackaday</h4></a><br>
 		</div>
 		<div id="tools">
 			<div style="padding:1em; border: 2px solid grey; margin-bottom:20px;">
 				<h3>Password Scrambler</h3>
-				<input type="name" name="password" value="" id="password"><br>
+				<input type="name" name="password" value="" id="password">
+				<br>
 				<!--<input type="submit" value="Submit"><br><br>-->
-				<input onclick="scramble();" type="button" class="button" value="Submit">
+
+                                <div style="width:50%;">
+					<h4>Password Length</h4>
+				</div>
+                                <div style="width:50%;">
+					<select id="length">
+						<option value="4">4</option>
+						<option value="8">8</option>
+						<option value="12">12</option>
+						<option value="18">18</option>
+                                	        <option value="21">21</option>
+                                	        <!--<option value="42">42</option>-->
+					</select>
+				</div>
+				<br>
+				<h4>
+				<div style="width:4em; height:1em; float:left">
+					<input id="alpha" checked type="checkbox" name="alpha" value="alpha"> A-z
+				</div>
+                                <div style="width:4em; height:1em; float:left">		
+					<input id="numeric" checked type="checkbox" name="numeric" value="numeric"> 0-9
+				</div>
+                                <div style="width:4em; height:1em; float:left">
+					<input id="swears" checked type="checkbox" name="swears" value="swears"> !%@#
+				</div>
+                                <!--<div width="width:4em; height:1em; float:left">
+                                        <input id="ob_swears" checked type="checkbox" name="ob_swears" value="ob_swears"> ΩÇ¥µû
+                                </div>-->
+
+				<br>
+				</h4>
+				<input onclick="Setup();" type="button" class="button" value="Submit">
 			</div>
-			<div style="padding:1em;text-align:justified; border: 2px solid grey; margin-bottom:20px;">
+			<!--<div style="padding:1em;text-align:justified; border: 2px solid grey; margin-bottom:20px;">
 				<h3>Present Value Calculator</h3>
                                 <label>Interest Rate</label>   <input type="password" name="interest" value=""><br>
                                 <label>Number of Periods</label>   <input type="password" name="periods" value=""><br>
@@ -183,7 +274,7 @@ function scramble(){
         
                                 <input type="submit" class="button" value="Submit"><br><br>
 
-			</div>
+			</div>-->
 		</div>
 	</section>
 
