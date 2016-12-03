@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="Author" content="brandon T. Wood malceore portfolio game design programming blog proffesional">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="platformer.js"></script>
   <script src="pixi.js"></script>
@@ -21,6 +20,11 @@
       margin:2px;
       width:48%;
       height:auto;
+    }
+    img:hover{
+     -moz-box-shadow:    3px 3px 5px 6px #ccc;
+     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+     box-shadow:         3px 3px 5px 6px #ccc;
     }
     .temp{
       font-family: "Lato";
@@ -40,12 +44,74 @@
         margin-right:30px;        
         text-align: center;
     }
+   .bar{width:0px;height:3.5em; background-color:#333333; margin-top:10px; margin-left:10px;
+       -webkit-transition-property: width; /* Safari */
+       -webkit-transition-duration: 3s; /* Safari */
+       transition-property: width;
+       transition-duration: 3s;
+       padding:1em;
+       color:white;
+   }
+@media screen and (min-width:640px){
+   .rotator{
+       -moz-transform: rotate(-90deg);
+       -ms-transform: rotate(-90deg);
+       -webkit-transform: rotate(-90deg);
+       transform: rotate(-90deg);
+       margin:0px;
+       height:200px;
+       width:250px;
+   }
+}
+  .line{
+      border-right: 2px solid black;
+  }
+  .des{
+      float:left;
+      margin-right:40px;
+  }
   </style>
+
+<script>
+var sem = 0;
+//Max 200 is mastered
+var skills = [
+        "200", //HtmlCss
+        "190", //js
+        "100", //php
+        "180", //sql
+        "50", //mongo
+        "150", //java
+        "100", //android
+        "50", //c++
+        "100", //cuda
+        "120", //python
+        "50", //ros
+        "150", //unit
+        "190", //game des
+        "180", //agile
+        "180", //manage
+        "200"   //db
+];
+function grow() {
+	if(sem<=0){
+        	//document.getElementById('bar').style.height = "200px";
+        	//var bars = document.getElementsByClassName('bar');
+        	var x = document.getElementsByClassName("bar");
+         	var i;
+        	for (i = 0; i < x.length; i++) {
+                    var temp = skills[i] + "px";
+        	    x[i].style.width = temp;
+        	}
+	}
+	sem++;
+};
+window.onscroll=grow
+
+</script>
 
 </head>
 <body onload="init()">
-
-<!--<div class="container">-->
 
   <div class="center">
     <canvas id="game">
@@ -55,43 +121,43 @@
 
 <div class="container">
   <div class="jumbotron" style="padding:2em;padding-top:5px; margin-left:2em;margin-right:2em;">
-    <h2>Skills <small> Ranked by proficiency and years of study. </small> 
-      <button type="button" class="btn btn-sm btn-default pull-right" data-toggle="collapse" data-target="#skills">_</button>
-    </h2>
-    <p></p>
-    <div id="skills" style="text-align:center; padding-left:1em; padding-right:1em;" class="collapse in">
-      <a href="https://en.wikipedia.org/wiki/Graphic_design" class="btn btn-default btn-md">Graphic Design</a>
-      <a href="http://www.studytonight.com/java/" class="btn btn-default btn-md">Java</a>
-      <a href="https://en.wikipedia.org/wiki/Object-oriented_programming" class="btn btn-default btn-md">OOP</a>
-      <a href="http://www.w3schools.com/html/html5_intro.asp" class="btn btn-default btn-md">HTML5</a>
-      <a href="http://www.w3schools.com/css/default.asp" class="btn btn-default btn-md">CSS</a>
-      <a href="https://en.wikipedia.org/wiki/3D_modeling" class="btn btn-default btn-md">3D Modeling</a>
-      <a href="https://en.wikipedia.org/wiki/Texture_mapping" class="btn btn-default btn-md">Texturing</a>
-      <a href="http://www.w3schools.com/js/" class="btn btn-default btn-md">Javascript</a>
-      <a href="http://www.w3schools.com/sql/default.asp" class="btn btn-default btn-md">MYSQL</a>
-      <a href="http://www.linuxfromscratch.org/lfs/" class="btn btn-default btn-md">Linux</a>
-      <a href="https://www.python.org/" class="btn btn-default btn-md">Python</a>
-      <a href="https://en.wikipedia.org/wiki/Animation" class="btn btn-default btn-md">Animation</a>
-      <a href="http://agilemethodology.org/" class="btn btn-default btn-md">Agile Development</a>
-      <a href="https://en.wikipedia.org/wiki/Game_design" class="btn btn-default btn-md">Game Design</a>
-      <a href="https://en.wikipedia.org/wiki/C%2B%2B" class="btn btn-default btn-md">C++</a>
-      <a href="https://en.wikipedia.org/wiki/CUDA" class="btn btn-default btn-md">CUDA</a>
-      <a href="http://www.w3schools.com/php/" class="btn btn-default btn-md">PHP</a>
-      <button type="button" class="btn btn-default btn-md">RUBY</a>
-      <button type="button" class="btn btn-default btn-md">MongoDB</a>
-      <button type="button" class="btn btn-default btn-md">Unit Testing</a>
-      <button type="button" class="btn btn-default btn-md">ARM Assembly</a>
-      <button type="button" class="btn btn-default btn-md">Mobile Applications</a>
-      <button type="button" class="btn btn-default btn-md">Marketing</a>
-      <button type="button" class="btn btn-default btn-md">Distributed Systems</a>
-      <button type="button" class="btn btn-default btn-md">Networking</a>
-      <button type="button" class="btn btn-default btn-md">Managment</a>
-    </div>
+    <h2>Skills </h2>
+
+   <div class="rotator">
+       <div class="des">Novice</div> <div class="des">Adept</div> <div class="des"> Master </div>
+       <br>
+       <div class="line" style="width:10px;">
+       <div class="line" style="width:110px;">
+       <div class="line" style="width: 210px;">
+           <div class="bar" style="left:0px;"> <div class="text"> HTML5/CSS </div> </div>
+           <div class="bar" style="left:50px;"> <div class="text">Javascript</div> </div>
+           <div class="bar" style="left:100px;"> <div class="text"> PHP/AJAX  </div> </div>
+           <div class="bar" style="left:150px;"> <div class="text"> MYSQL </div> </div>
+           <div class="bar" style="left:200px;"> <div class="text"> MongoDB </div> </div>
+
+           <div class="bar" style="left:300px;"> <div class="text"> Java </div></div>
+           <div class="bar" style="left:350px;"> <div class="text"> Android </div></div>
+           <div class="bar" style="left:400px;"> <div class="text"> C++ </div></div>
+           <div class="bar" style="left:450px;"> <div class="text"> CUDA </div></div>
+           <div class="bar" style="left:500px;"> <div class="text"> Python </div></div>
+           <div class="bar" style="left:550px;"> <div class="text"> ROS </div></div>
+
+           <div class="bar" style="left:650px;"> <div class="text"> UnitTesting </div></div>
+           <div class="bar" style="left:700px;"> <div class="text"> GameDesign </div></div>
+           <div class="bar" style="left:750px;"> <div class="text"> Agile </div></div>
+           <div class="bar" style="left:800px;"> <div class="text"> Managment </div></div>
+           <div class="bar" style="left:850px;"> <div class="text"> Databases </div></div>
+       </div>
+       </div>
+       </div>
+   </div>
+   <br>
   </div>
+
   <div class="row" style="margin-top:0px;">
     <div class="col-sm-6">
-      <a href="res/knave_1.png"><img src="res/knave_1.png"></img></a>
-      <a href="res/knave_2.png"><img src="res/knave_2.png"></img></a>
+      <a href="res/knave_1.png"> <img src="res/knave_1.png"></img></a>
+      <a href="res/knave_2.png"> <img src="res/knave_2.png"></img></a>
     </div>
     <div class="col-sm-6">
       <h1>Knave <small> Javascript, Pixi.js, Game Design</small></h1>
