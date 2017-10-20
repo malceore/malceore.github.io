@@ -5,11 +5,14 @@
   <meta charset="utf-8">
   <meta name="Author" content="brandon T. Wood malceore portfolio game design programming blog proffesional">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="platformer.js"></script>
   <script src="pixi.js"></script>
-
   <style>
+    .jumbotron{
+        min-height:400px;
+    }
     a{
         color:#aec05c;
     }
@@ -51,7 +54,9 @@
        transition-duration: 3s;
        padding:1em;
        color:white;
+       font-size:15px;
    }
+
 @media screen and (min-width:640px){
    .rotator{
        -moz-transform: rotate(-90deg);
@@ -59,8 +64,8 @@
        -webkit-transform: rotate(-90deg);
        transform: rotate(-90deg);
        margin:0px;
-       height:200px;
-       width:250px;
+       height:300px;
+       width:360px;
    }
 }
   .line{
@@ -69,7 +74,7 @@
   }
   .des{
       float:left;
-      margin-right:40px;
+      padding-right:75px;
   }
   </style>
 
@@ -77,25 +82,25 @@
 var sem = 0;
 //Max 200 is mastered
 var skills = [
-        "180", //web spacer
-        "110", //JQuery
-        "150", //nodejs
-        "150", //React
-        "120", //php
-        "150", //flask
+         //web spacer
+        "210", //JQuery
+        "160", //nodejs
+        "160", //React
+        "260", //php
+        "190", //flask
 
-        "180", //native spacer
-        "200", //java
-        "80", //android
-        "80", //cuda
-        "200", //python
-        "110", //ros
+        //native spacer
+        "310", //java
+        "120", //android
+        "120", //cuda
+        "310", //python
+        "150", //ros
 
-        "180", //devops spacer
-        "150", //bosh/chef
+        //devops spacer
+        "250", //bosh/chef
         "200", //Atlassian
-        "180", //AWS
-        "200", //Databases
+        "160", //AWS
+        "300", //Databases
 ];
 function grow() {
 	if(sem<=0){
@@ -130,33 +135,44 @@ window.onscroll=grow
    <div class="rotator">
        <div class="des">Novice</div> <div class="des">Adept</div> <div class="des"> Master </div>
        <br>
-       <div class="line" style="width:10px;">
-       <div class="line" style="width:110px;">
-       <div class="line" style="width: 210px;">
-           <div class="bar" style="left:50px; background-color:inherit; color:grey;"> <div class="text"><b>Web</b></div> </div>
-           <div class="bar" style="left:50px; background-color:#009933"> <div class="text">JQuery</div> </div>
-           <div class="bar" style="left:100px; background-color:#00cc00;"> <div class="text"> NodeJs </div> </div>
+       <div class="line" style="width:1px;">
+       <div class="line" style="width:160px;">
+       <div class="line" style="width:310px;">
+           <div style="left:50px;color:grey;margin-left:1.5em;"> <div class="text"><h3>Web</h3></div> </div>
+           <div class="bar" style="left:100px; background-color:#009933"> <div class="text">JQuery</div> </div>
+           <div class="bar" style="left:150px; background-color:#00cc00;"> <div class="text"> NodeJs </div> </div>
            <div class="bar" style="left:50px; background-color:#00cc66;"> <div class="text">React</div></div>
            <div class="bar" style="left:100px; background-color:#00cc99;"> <div class="text"> PHP/AJAX </div> </div>
            <div class="bar" style="left:150px; background-color:#009999;"> <div class="text"> Flask </div> </div>
 
-           <div class="bar" style="left:50px; background-color:inherit; color:black"> <div class="text"><b>Native</b></div> </div>
+           <div style="left:50px; ;color:grey;margin-left:1.5em;""> <div class="text"><h3>Native</h3></div> </div>
            <div class="bar" style="left:300px; background-color:#0066cc;"> <div class="text"> Java </div></div>
            <div class="bar" style="left:350px; background-color:#0066ff;"> <div class="text"> Android </div></div>
            <div class="bar" style="left:450px; background-color:#00ccff;"> <div class="text"> CUDA </div></div>
            <div class="bar" style="left:500px; background-color:#33cccc;"> <div class="text"> Python </div></div>
            <div class="bar" style="left:550px; background-color:#009999;"> <div class="text"> ROS </div></div>
 
-           <div class="bar" style="left:50px; background-color:inherit; color:black"> <div class="text"><b>DevOps</b></div> </div>
+           <div style="left:50px;;color:grey;margin-left:1.5em;""> <div class="text"><h3>DevOps</h3></div> </div>
            <div class="bar" style="left:650px; background-color:#3333cc;"> <div class="text"> BOSH/Chef </div></div>
-           <div class="bar" style="left:700px; background-color:#6600ff;"> <div class="text"> Atlassian-Toolset </div></div>
-           <div class="bar" style="left:750px; background-color:#cc66ff;"> <div class="text"> Amazon-Webservices </div></div>
-           <div class="bar" style="left:850px; background-color:#9900cc;"> <div class="text"> Postgresql </div></div>
+           <div class="bar" style="left:700px; background-color:#6600ff;"> <div class="text"> Atlassian </div></div>
+           <div class="bar" style="left:750px; background-color:#cc66ff;"> <div class="text"> AWS </div></div>
+           <div class="bar" style="left:850px; background-color:#9900cc;"> <div class="text"> Databases </div></div>
        </div>
        </div>
        </div>
    </div>
-   <br>
+   <div>
+   <br><br>
+	<p class="collapse" id="viewdetails" style="font-size:12px;">
+		Novice - I have some experience but have not completed a standalone application with it.<br>
+		Adept - I have completed an application with this technoloy and could easily contribute to a related project.<br>
+		Master - I would feel comfortable leading a team in building an end to end application using this technoloy. <br>
+		*Databases: I am highly familiar with Relational Databases including Mysql and Postgresql. Some exposure to Mongodb.<br>
+        <p>
+	<a class="btn" data-toggle="collapse" data-target="#viewdetails">
+		more &raquo;
+	</a>
+   </div>
   </div>
 
   <div class="row" style="margin-top:0px;">
@@ -249,7 +265,7 @@ window.onscroll=grow
     </div>
   </div>
 
-  
+<!--  
   <div class="row">
     <div class="col-sm-6">
       <a href="res/poster_chart.png"><img src="res/poster_chart.png"></img></a>
@@ -274,7 +290,6 @@ window.onscroll=grow
     </div>
   </div>
 
-  <!--
   <div class="row">
     <div class="col-sm-6">
       <h1>Catchall <small> HTML5, RSS, MYSQL </small></h1>
