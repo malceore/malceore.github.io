@@ -44,7 +44,7 @@
         margin-right:30px;        
         text-align: center;
     }
-   .bar{width:0px;height:3.5em; background-color:#333333; margin-top:10px; margin-left:10px;
+   .bar{width:1px;height:3.75em; background-color:#333333; margin-top:0px; margin-left:0px;
        -webkit-transition-property: width; /* Safari */
        -webkit-transition-duration: 3s; /* Safari */
        transition-property: width;
@@ -65,6 +65,7 @@
 }
   .line{
       border-right: 2px solid black;
+      z-index: -1;
   }
   .des{
       float:left;
@@ -76,22 +77,25 @@
 var sem = 0;
 //Max 200 is mastered
 var skills = [
-        "200", //HtmlCss
-        "190", //js
-        "100", //php
-        "180", //sql
-        "50", //mongo
-        "150", //java
-        "100", //android
-        "50", //c++
-        "100", //cuda
-        "120", //python
-        "50", //ros
-        "150", //unit
-        "190", //game des
-        "180", //agile
-        "180", //manage
-        "200"   //db
+        "180", //web spacer
+        "110", //JQuery
+        "150", //nodejs
+        "150", //React
+        "120", //php
+        "150", //flask
+
+        "180", //native spacer
+        "200", //java
+        "80", //android
+        "80", //cuda
+        "200", //python
+        "110", //ros
+
+        "180", //devops spacer
+        "150", //bosh/chef
+        "200", //Atlassian
+        "180", //AWS
+        "200", //Databases
 ];
 function grow() {
 	if(sem<=0){
@@ -129,24 +133,25 @@ window.onscroll=grow
        <div class="line" style="width:10px;">
        <div class="line" style="width:110px;">
        <div class="line" style="width: 210px;">
-           <div class="bar" style="left:0px;"> <div class="text"> HTML5/CSS </div> </div>
-           <div class="bar" style="left:50px;"> <div class="text">Javascript</div> </div>
-           <div class="bar" style="left:100px;"> <div class="text"> PHP/AJAX  </div> </div>
-           <div class="bar" style="left:150px;"> <div class="text"> MYSQL </div> </div>
-           <div class="bar" style="left:200px;"> <div class="text"> MongoDB </div> </div>
+           <div class="bar" style="left:50px; background-color:inherit; color:grey;"> <div class="text"><b>Web</b></div> </div>
+           <div class="bar" style="left:50px; background-color:#009933"> <div class="text">JQuery</div> </div>
+           <div class="bar" style="left:100px; background-color:#00cc00;"> <div class="text"> NodeJs </div> </div>
+           <div class="bar" style="left:50px; background-color:#00cc66;"> <div class="text">React</div></div>
+           <div class="bar" style="left:100px; background-color:#00cc99;"> <div class="text"> PHP/AJAX </div> </div>
+           <div class="bar" style="left:150px; background-color:#009999;"> <div class="text"> Flask </div> </div>
 
-           <div class="bar" style="left:300px;"> <div class="text"> Java </div></div>
-           <div class="bar" style="left:350px;"> <div class="text"> Android </div></div>
-           <div class="bar" style="left:400px;"> <div class="text"> C++ </div></div>
-           <div class="bar" style="left:450px;"> <div class="text"> CUDA </div></div>
-           <div class="bar" style="left:500px;"> <div class="text"> Python </div></div>
-           <div class="bar" style="left:550px;"> <div class="text"> ROS </div></div>
+           <div class="bar" style="left:50px; background-color:inherit; color:black"> <div class="text"><b>Native</b></div> </div>
+           <div class="bar" style="left:300px; background-color:#0066cc;"> <div class="text"> Java </div></div>
+           <div class="bar" style="left:350px; background-color:#0066ff;"> <div class="text"> Android </div></div>
+           <div class="bar" style="left:450px; background-color:#00ccff;"> <div class="text"> CUDA </div></div>
+           <div class="bar" style="left:500px; background-color:#33cccc;"> <div class="text"> Python </div></div>
+           <div class="bar" style="left:550px; background-color:#009999;"> <div class="text"> ROS </div></div>
 
-           <div class="bar" style="left:650px;"> <div class="text"> UnitTesting </div></div>
-           <div class="bar" style="left:700px;"> <div class="text"> GameDesign </div></div>
-           <div class="bar" style="left:750px;"> <div class="text"> Agile </div></div>
-           <div class="bar" style="left:800px;"> <div class="text"> Managment </div></div>
-           <div class="bar" style="left:850px;"> <div class="text"> Databases </div></div>
+           <div class="bar" style="left:50px; background-color:inherit; color:black"> <div class="text"><b>DevOps</b></div> </div>
+           <div class="bar" style="left:650px; background-color:#3333cc;"> <div class="text"> BOSH/Chef </div></div>
+           <div class="bar" style="left:700px; background-color:#6600ff;"> <div class="text"> Atlassian-Toolset </div></div>
+           <div class="bar" style="left:750px; background-color:#cc66ff;"> <div class="text"> Amazon-Webservices </div></div>
+           <div class="bar" style="left:850px; background-color:#9900cc;"> <div class="text"> Postgresql </div></div>
        </div>
        </div>
        </div>
