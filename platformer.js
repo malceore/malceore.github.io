@@ -128,7 +128,7 @@ function init(){
   platform[1].drawRoundedRect(0, 0, 480, 55, 5);
   stage.addChild(platform[1]);
 
-  var text1 = new PIXI.Text("I am a Platform Developer and SRE working for Liberty Mutual's\nEnterprise Technology Division.", {font:"16px Arial", fill:"0x333333"});
+  var text1 = new PIXI.Text("I am currently a Platform Developer and DevOps Engineer for\nLiberty Mutual's Enterprise Technology Services division.", {font:"16px Arial", fill:"0x333333"});
   text1.position.y = 158;
   text1.position.x = 415;
   stage.addChild(text1);
@@ -141,7 +141,7 @@ function init(){
   platform[2].drawRoundedRect(0, 0, 480, 55, 5);
   stage.addChild(platform[2]);
 
-  var text2 = new PIXI.Text("I currently help maintain a CI/CD Pipeline supporting tens of \nthousands of corporate users every day.", {font:"16px Arial", fill:"0x333333"});
+  var text2 = new PIXI.Text("There I help maintain and expand a multi-faceted CI/CD Pipeline\nusing Atlassian Tools and AWS infrastructure.", {font:"16px Arial", fill:"0x333333"});
   text2.position.y = 280;
   text2.position.x = 415;
   stage.addChild(text2);
@@ -154,7 +154,7 @@ function init(){
   platform[3].drawRoundedRect(0, 0, 480, 55, 5);
   stage.addChild(platform[3]);
 
-  var text2 = new PIXI.Text("In my free time I develop computer games, garden and volunteer\nteaching children programming.", {font:"16px Arial", fill:"0x333333"});
+  var text2 = new PIXI.Text("In my free time I develop computer games, garden and volunteer\nat schools teaching children programming skills.", {font:"16px Arial", fill:"0x333333"});
   text2.position.y = 398;
   text2.position.x = 415;
   stage.addChild(text2);
