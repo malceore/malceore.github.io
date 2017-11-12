@@ -22,6 +22,7 @@
     img{
       margin:2px;
       width:48%;
+      max-height:210px;
       height:auto;
     }
     img:hover{
@@ -76,6 +77,39 @@
       float:left;
       padding-right:75px;
   }
+
+.carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+/* The controlsy */
+.carousel-control {
+	left: -12px;
+    height: 40px;
+	width: 40px;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    margin-top: 90px;
+}
+.carousel-control.right {
+	right: -12px;
+}
+/* The indicators */
+.carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: -10px;
+	margin-right: -19px;
+}
+/* The colour of the indicators */
+.carousel-indicators li {
+	background: #cecece;
+}
+.carousel-indicators .active {
+background: #428bca;
+}
+
   </style>
 
 <script>
@@ -176,32 +210,205 @@ window.onscroll=grow
    </div>
   </div>
 
-  <div class="row" style="margin-top:0px;">
-    <div class="col-sm-6">
-      <a href="res/knave_1.png"> <img src="res/knave_1.png"></img></a>
-      <a href="res/knave_2.png"> <img src="res/knave_2.png"></img></a>
-    </div>
-    <div class="col-sm-6">
-      <h1>Knave <small> Javascript, Pixi.js, Game Design</small></h1>
-      <p>All art and programming for Knave was done by Brandon over the course of a year. Knave is an Idle-RPG-Adventure game with almost 50 levels, different playable races, dozens of adorable monsters and a leveling system. </p>
-      <a href="https://github.com/malceore/knave">Source</a>
-      <a style="margin-left:10px" href="http://www.newgrounds.com/portal/view/679756">Demo</a>
-    </div>
+  <div class="row">
+    <h2>Games</h2>
+    <div id="Carousel1" class="carousel slide">
+      <ol class="carousel-indicators">
+          <li data-target="#Carousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#Carousel1" data-slide-to="1"></li>
+          <li data-target="#Carousel1" data-slide-to="2"></li>
+        </ol>  
+            <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="item active">
+          <div class="row">
+          <div class="col-sm-6">
+            <a href="res/knave_1.png"> <img src="res/knave_1.png"></img></a>
+            <a href="res/knave_2.png"> <img src="res/knave_2.png"></img></a>
+          </div>
+          <div class="col-sm-6" style="height:185px">
+            <h1>Knave <small> Javascript, Pixi.js, Game Design</small></h1>
+            <p>All art and programming for Knave was done by Brandon over the course of a year. Knave is an Idle-RPG-Adventure game with almost 50 levels, different playable races, dozens of adorable monsters and a leveling system. </p>
+            <a href="https://github.com/malceore/knave">Source</a>
+            <a style="margin-left:10px" href="http://www.newgrounds.com/portal/view/679756">Demo</a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      <div class="item">
+              <div class="row">
+          <div class="col-sm-6">
+            <a href="res/abomhim_4.png"><img src="res/abomhim_4.png"></img></a>
+            <a href="res/abomhim_1.png"><img src="res/abomhim_1.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Abominable <small>Python, 3D Models, Panda3D</small></h1>
+            <p>3D Platforming game made for a semester long Game Design course. Worked in a group of
+              five using weekly Agile Sprints and a Scrum backlog. Brandon assisted in
+              Programming and all visuals including. The class was taught by Dr. Brian Ladd who worked for Epic Games.</p>
+            <a href="https://github.com/tbackus127/AbominableSnowmanGame">Source</a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      <div class="item">
+        <div class="row">
+          <div class="col-sm-6" style="height:185px;">
+            <a href="res/quor_2.png"><img src="res/quor_2.png"></img></a>
+            <a href="res/quor_3.png"><img src="res/quor_3.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Quoridor <small> Java, Networking </small></h1>
+            <p>Full featured Quoridor game completed with a group of five peers using Test Guided Development for a Software Engineering class. Brandon contributed heavily to the core features, server-client architecture and Artificial Intelligence. </p>
+            <a href="https://github.com/teamfatalexception/quoridor">Source</a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      </div><!--.carousel-inner-->
+        <a data-slide="prev" href="#Carousel1" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#Carousel1" class="right carousel-control">›</a>
+      </div><!--.Carousel-->
   </div>
-  <br>
 
-  <div class="row" style="margin-top:15px;">
-    <div class="col-sm-6">
-      <a href="res/abomhim_4.png"><img src="res/abomhim_4.png"></img></a>
-      <a href="res/abomhim_1.png"><img src="res/abomhim_1.png"></img></a>
-    </div>
-    <div class="col-sm-6">
-      <h1>Abominable <small>Python, 3D Models, Panda3D</small></h1>
-      <p>Childrens 3D Platforming game made for a semester long Game Design course. Worked in a group of five using weekly Agile Sprints and a Scrum backlog. Brandon assisted in Core Programming and produced all visuals including textures and animations. The class was taught by Dr. Brian Ladd who previously worked for Epic Games.</p>
-      <a href="https://github.com/tbackus127/AbominableSnowmanGame">Source</a>
-    </div>
+  <div class="row">
+    <h2>Websites</h2>
+    <div id="Carousel2" class="carousel slide">
+      <ol class="carousel-indicators">
+          <li data-target="#Carousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#Carousel2" data-slide-to="1"></li>
+          <li data-target="#Carousel2" data-slide-to="2"></li>
+      </ol>
+       
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+      <div class="item active">
+        <div class="row">
+            <div class="col-sm-6">
+            <a href="res/bearcon_1.png"><img src="res/bearcon_1.png"></img></a>
+            <a href="res/bearcon_2.png"><img src="res/bearcon_2.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Bear-con Webmin <small> Bootstrap, CSS</small></h1>
+            <p>Brandon maintained this events website for five years up until 2016 when he rebuilt
+              it with boostrap and trained a replacement. Bear-con is a video game and anime
+              convention hosted by SUNY Potsdam and hosting two-hundred people annually.</p>
+            <a href="http://www2.potsdam.edu/bearcon/"> Link </a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+
+      <div class="item">
+        <div class="row">
+           <div class="col-sm-6">
+            <a href="res/copter_central1.png"><img src="res/copter_central1.png"></img></a>
+            <a href="res/copter_central2.png"><img src="res/copter_central2.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Copter Central <small> Bootstrap, PHP, MYSQL</small></h1>
+            <p>A full-stack mock website that sells Quadcopters and their accessories. Brandon built it in two weeks as part of an advanced databases course. It uses PHP and MYSQL to query the databases, track users and their purchases.</p>
+            <a href="https://github.com/malceore/coptercentral"> Source </a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+
+      <div class="item">
+        <div class="row">
+          <div class="col-sm-6">
+            <a href="res/swim_a_mile_1.png"> <img src="res/swim_a_mile_1.png"></img> </a>
+            <a href="res/swim_a_mile_2.png"> <img src="res/swim_a_mile_2.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Swim a Mile Site <small> Bootstrap, Databases</small></h1>
+            <p>Brandon worked with two clients at Hospice and Palative Care to design a modern and user friendly site for their Swim a Mile for Hospice charity event. Learned to use Bootstrap for webdesign and integrated Hospice's swimmer database.</p>
+            <a href="http://www.swimamileforhospice.org/"> Link </a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+
+      </div><!--.carousel-inner-->
+        <a data-slide="prev" href="#Carousel2" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#Carousel2" class="right carousel-control">›</a>
+      </div><!--.Carousel-->
   </div>
-  <br>
+
+  <div class="row">
+    <h2>Projects</h2>
+    <div id="Carousel3" class="carousel slide">
+
+      <ol class="carousel-indicators">
+          <li data-target="#Carousel3" data-slide-to="0" class="active"></li>
+          <li data-target="#Carousel3" data-slide-to="1"></li>
+          <li data-target="#Carousel3" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+      <div class="item active">
+        <div class="row">
+          <div class="col-sm-6">
+            <a href="res/webapp_1.jpg"> <img src="res/webapp_1.jpg"></img> </a>
+            <a href="res/webapp_2.jpg"> <img src="res/webapp_2.jpg"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Web-App Controlled Lights <small> Python, Arduinos</small></h1>
+            <p>
+              Brandon created a webserver from scratch using Python's Twisted networking library
+              including a web API for extensibility. The project made use of writing serial commands
+              via usb to an arduino that controlled an outlette box of relays.
+           </p>
+           <a href="http://www.instructables.com/id/Web-app-Controlled-Lighting/"> Link </a>
+           <a href="https://gist.github.com/malceore/3dd520347bd108eb82e1f02dfbeeca5f"> Source </a>
+         </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      <div class="item">
+        <div class="row">
+          <div class="col-sm-6">
+            <a href="res/nylon_1.jpg"> <img src="res/nylon_1.jpg"></img> </a>
+            <a href="res/nylon_2.jpg"> <img src="res/nylon_2.jpg"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Nylon Artificial-Muscle <small> Science</small></h1>
+            <p>
+               Brandon, reproducing the scientific results found by MIT was able to fabricate his
+               own nylon material linear-actuators at home using common fishing line. So that others
+               could do the same he produced a tutorial linked below.
+            </p>
+            <a
+              href="http://www.instructables.com/id/Fabricating-Fishing-Line-Artificial-Muscle-at-Home/"> Link </a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      <div class="item">
+        <div class="row">
+          <div class="col-sm-6">
+            <a href="res/robit_1.jpg"> <img src="res/robit_1.jpg"></img> </a>
+            <a href="res/open_worm.png"> <img src="res/open_worm.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>OpenWorm Robot<small> AI, Robotics</small></h1>
+           <p>
+              Using code from the OpenWorm connectome project, Brandon created a piece of wrapper logic
+              around a virtual worm's nervous system to create an AI for his robot that could move
+              and correct course for objects only using the Worm's brain.
+           </p>
+           <a href="https://www.youtube.com/watch?v=g1PlTrWB6-Y"> Link </a>
+           <a style="margin-left:10px;" href="https://github.com/malceore/connectbot"> Source </a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      </div><!--.carousel-inner-->
+        <a data-slide="prev" href="#Carousel3" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#Carousel3" class="right carousel-control">›</a>
+      </div><!--.Carousel-->
+  </div>
+      
+  <!--
+
 
   <div class="row" style="margin-top:15px;">
     <div class="col-sm-6">
@@ -216,57 +423,6 @@ window.onscroll=grow
   </div>
   <br>
 
-  <div class="row" style="margin-top:15px;">
-    <div class="col-sm-6">
-      <a href="res/quor_2.png"><img src="res/quor_2.png"></img></a>
-      <a href="res/quor_3.png"><img src="res/quor_3.png"></img></a>
-    </div>
-    <div class="col-sm-6">
-      <h1>Quoridor <small> Java, Networking </small></h1>
-      <p>Full featured Quoridor game completed with a group of five peers using Test Guided Development for a Software Engineering class. Brandon contributed heavily to the core features, server-client architecture and Artificial Intelligence. </p>
-      <a href="https://github.com/teamfatalexception/quoridor">Source</a>
-    </div>
-  </div>
-  <br>
-
-  <div class="row" style="margin-top:15px;">
-    <div class="col-sm-6">
-      <a href="res/swim_a_mile_1.png"> <img src="res/swim_a_mile_1.png"></img> </a>
-      <a href="res/swim_a_mile_2.png"> <img src="res/swim_a_mile_2.png"></img></a>
-    </div>
-    <div class="col-sm-6">
-      <h1>Swim a Mile Site <small> Bootstrap, Databases</small></h1>
-      <p>Brandon worked with two clients at Hospice and Palative Care to design a modern and user friendly site for their Swim a Mile for Hospice charity event. Learned to use Bootstrap for webdesign and integrated Hospice's swimmer database.</p>
-      <a href="http://www.swimamileforhospice.org/"> Link </a>
-    </div>
-  </div>
-  <br>
-
-  <div class="row" style="margin-top:15px;">
-    <div class="col-sm-6">
-      <a href="res/copter_central1.png"><img src="res/copter_central1.png"></img></a>
-      <a href="res/copter_central2.png"><img src="res/copter_central2.png"></img></a>
-    </div>
-    <div class="col-sm-6">
-      <h1>Copter Central <small> Bootstrap, PHP, MYSQL</small></h1>
-      <p>A full-stack mock website that sells Quadcopters and their accessories. Brandon built it in two weeks as part of an advanced databases course. It uses PHP and MYSQL to query the databases, track users and their purchases.</p>
-      <a href="https://github.com/malceore/coptercentral"> Source </a>
-    </div>
-  </div>
-
-  <div class="row" style="margin-top:15px;">
-    <div class="col-sm-6">
-      <a href="res/bearcon_1.png"><img src="res/bearcon_1.png"></img></a>
-      <a href="res/bearcon_2.png"><img src="res/bearcon_2.png"></img></a>
-    </div>
-    <div class="col-sm-6">
-      <h1>Bear-con Webmin <small> Bootstrap, HTML5, CSS</small></h1>
-      <p>Brandon maintained this events website for five years up until 2016 when he rebuilt it with boostrap and trained a replacement. Bear-con is a video game and anime convention hosted by SUNY Potsdam and usually brings in around a hundred and fifty people annually.</p>
-      <a href="http://www2.potsdam.edu/bearcon/"> Link </a>
-    </div>
-  </div>
-
-<!--  
   <div class="row">
     <div class="col-sm-6">
       <a href="res/poster_chart.png"><img src="res/poster_chart.png"></img></a>
@@ -309,10 +465,7 @@ window.onscroll=grow
       <p><small>Rights @ Brandon T. Wood, Bunny and PIXI.js belongs to GoodBoyDigital</small></p>
     </div>
   </div>
-
-
-</div>
-
+  </div>
 </body>
 </html>
 
