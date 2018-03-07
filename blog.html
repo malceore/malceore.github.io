@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>brandon's | blog</title>
+        <script src="./blog.js"></script>
 	<style>
 		body{
 			font-size:16px;
@@ -42,14 +43,14 @@
 				brandon's blog
 				<small><br>Projects Projects Projects</small>
 			</h1>
-			<img style="width:150px; height:150px;" src="./res/place_holder.png" alt="mascott"></img>
+			<img style="width:150px; height:150px; margin:20px;" src="./res/icon_doodles.png" alt="mascott"></img>
 		</div>
 		<div>
 			My Pages
 			<ul>
-				<li>Personal Site</li>
-  				<li>Github</li>
-  				<li>Milk</li>
+				<li><a href="http://malceore.github.io/" >Personal Site</a></li>
+  				<li><a href="https://github.com/malceore" >Github</a></li>
+  				<li><a href="https://www.youtube.com/channel/UC4-nL9qWVJ8qw4Q0gv8tYcg?view_as=subscriber" >Youtube</a></li>
 			</ul>
 
                         Recent Posts
@@ -60,37 +61,22 @@
                                 <li>You should use an IDE</li>
                         </ul>
 
-
-                        Categories
-                        <ul>
-                                <li>Programming</li>
-                                <li>Programming</li>
-                                <li>Programming</li>
-                                <li>Programming</li>
-                                <li>Finance</li>
-                                <li>Linux</li>
-                        </ul>
+			<div id="filter_category"></div>
 
 		</div>
 	</aside>
 
         <section>
-		<h1>Dummy post</h1>
-		<p>
-		Curl up and sleep on the freshly laundered towels jump around on couch, meow constantly until given food, slap owner's face at 5am until human fills food dish. Under the bed claw at curtains stretch and yawn nibble on tuna ignore human bite human hand pushes butt to face and cat slap dog in face but drool refuse to come home when humans are going to bed; stay out all night then yowl 
-		<br><br>Like i am dying at 4am so sleep on my human's head. Cough furball into food bowl then scratch owner for a new one chase red laser dot or soft kitty warm kitty little ball of furr. Attack feet rub face on everything, open the door, let me out, let me out, let me-out, let me-aow, let meaow, meaow! but show belly. Jump off balcony, onto stranger's head make meme, make cute face, furrier and even more furrier hairball yet adventure always. 
-		<br><br>Flop over refuse to leave cardboard box. And sometimes switches in french and say "miaou" just because well why not woops poop hanging from butt must get rid run run around house drag poop on floor maybe it comes off woops left brown marks on floor human slave clean lick butt now yet pretend you want to go out but then don't curl up and sleep on the freshly laundered towels so yowling nonstop the whole night spend six hours per day washing, but still have a crusty butthole. Spend six hours per day washing, but still have a crusty butthole climb leg. 
-		<br><br>Spend six hours per day washing, but still have a crusty butthole eat grass, throw it back up and thinking longingly about tuna brine. Find something else more interesting find something else more interesting, and chase the pig around the house hunt by meowing loudly at 5am next to human slave food dispenser but claw at curtains stretch and yawn nibble on tuna ignore human bite human hand. 
-		<br><br>Scream for no reason at 4 am stare at the wall, play with food and get confused by dust or knock over christmas tree. Twitch tail in permanent irritation play time sweet beast, intently sniff hand, or when in doubt, wash inspect anything brought into the house lick face hiss at owner, pee a lot, and meow repeatedly scratch at fence purrrrrr eat muffins and poutine until owner comes back. Sit and stare hack up furballs, have secret plans so jump around on couch, meow constantly until given food, and lay on arms while you're using the keyboard purr for no reason and refuse to come home when humans are going to bed; stay out all night then yowl like i am dying at 4am. 
-		<br><br>I shredded your linens for you ignore the human until she needs to get up, then climb on her lap and sprawl so eat and than sleep on your face. Sleep on keyboard. Put butt in owner's face be a nyan cat, feel great about it, be annoying 24/7 poop rainbows in litter box all day. Lick butt and make a weird face scratch at fleas, meow until belly rubs, hide behind curtain when vacuum cleaner is on scratch strangers and poo on owners food jumps off balcony gives owner dead mouse at present then poops in litter box snatches yarn and fights with dog cat chases laser then plays in grass finds tiny spot in cupboard and sleeps all day jumps in bathtub and meows when owner fills 
-		<br><br>food dish the cat knocks over the food dish cat slides down the water slide and into pool and swims even though it does not like water or paw at beetle and eat it before it gets away. Scratch the postman wake up lick paw wake up owner meow meow pelt around the house and up and down stairs chasing phantoms, so swat turds around the house so poop in litter box, scratch the walls yet show belly. Stretch use lap as chair stare at guinea pigs drool sleep on my human's head freak human out make funny noise mow mow mow mow mow mow success now attack human pet right here, no not there, here, no fool, right here that other cat smells funny you should really give me all the treats because i smell the best and omg you finally got the right spot and i love you right now. Pelt around the house and up and down stairs chasing phantoms if human is on laptop sit on the keyboard 
-		<br><br>i am the best howl on top of tall thing yet drool. Hunt by meowing loudly at 5am next to human slave food dispenser sit and stare but vommit food and eat it again yet purr or sniff sniff or hunt anything that moves. Pee in the shoe pounce on unsuspecting person slap kitten brother with paw for stare at the wall, play with food and get confused by dust. Meowing non stop for food if it fits, i sits sit in box yet throw down all the stuff in the kitchen lick plastic bags.
-		</p>
+		<div id="container"></div>
+		<div id="notice"></div>
 	</section>
 
 	<footer>
 		<br>
 		Created by Brandon T. Wood @ 2018
 	</footer>
+	<script>
+		document.addEventListener('DOMContentLoaded', app.init);
+	</script>
 </body>
 </html>
