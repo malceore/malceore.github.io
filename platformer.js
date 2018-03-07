@@ -62,7 +62,7 @@ function init(){
   // First description thing. REMOVED
 
   var desc2 = new PIXI.Text("Resume", {font:"20px Arial", fill:"0x333333"});
-  desc2.position.y = 45;
+  desc2.position.y = 40;
   desc2.position.x = 810;
   desc2.buttonMode = true;
   desc2.interactive = true;
@@ -78,7 +78,7 @@ function init(){
   stage.addChild(desc2);
 
   var desc3 = new PIXI.Text("Contact", {font:"20px Arial", fill:"0x333333"});
-  desc3.position.y = 45;
+  desc3.position.y = 40;
   desc3.position.x = 710;
   desc3.interactive = true;
   desc3.buttonMode = true;
@@ -98,6 +98,23 @@ function init(){
     stage.addChild(banner.sprite);	
   }
   stage.addChild(desc3);
+
+  var desc4 = new PIXI.Text("Blog", {font:"20px Arial", fill:"0x333333"});
+  desc4.position.y = 40;
+  desc4.position.x = 630;
+  desc4.buttonMode = true;
+  desc4.interactive = true;
+  desc4.mouseover = function(e){
+    this.position.y -= 3;
+  } 
+  desc4.mouseout = function(e){
+    this.position.y += 3;
+  }
+  desc4.click = function(e){
+    window.location='./blog.html';
+  }
+  stage.addChild(desc4);
+
 
   // portrait background.
   platform[0] = new PIXI.Graphics();
