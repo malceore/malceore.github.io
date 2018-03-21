@@ -74,7 +74,6 @@ const app = function (){
 		url += '?key=' + API_KEY;
 		url += '&page=' + page;
 		url += category !== null ? '&category=' + category : '';
-
 		return url;
 	}
 
