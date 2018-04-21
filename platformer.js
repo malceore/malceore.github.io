@@ -158,7 +158,7 @@ function init(){
   platform[2].drawRoundedRect(0, 0, 480, 55, 5);
   stage.addChild(platform[2]);
 
-  var text2 = new PIXI.Text("There I help maintain and expand a multi-faceted CI/CD Pipeline\nusing Atlassian Tools and AWS infrastructure.", {font:"16px Arial", fill:"0x333333"});
+  var text2 = new PIXI.Text("I am interested in Robotics, IoT, VR/AR, building Python services\nworking with Linux and solving difficult problems.", {font:"16px Arial", fill:"0x333333"});
   text2.position.y = 280;
   text2.position.x = 415;
   stage.addChild(text2);
@@ -352,7 +352,7 @@ function movePlayer(){
   // check if you've been touched and thus killed by enemies.
   for(var i=0; i<enemies.length; i++){
     if(enemies.length > -1 && hitTest(player, enemies[i].sprite)){
-      console.log("AHHHHHHH! OUCH!");
+      //console.log("AHHHHHHH! OUCH!");
       death();
     }
   }
@@ -362,7 +362,7 @@ function movePlayer(){
       LEVEL++;
   }else if(t2 == 300){
       LEVEL++;
-      console.log("	It begins, monsters spawn.");
+      //console.log("	It begins, monsters spawn.");
 
       titleText.text = "Score: " + score;
 

@@ -3,9 +3,10 @@
 <head>
   <title>Malceore.io - Brandon T. Wood Portfolio</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="Author" content="brandon T. Wood malceore portfolio game design programming blog proffesional">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="platformer.js"></script>
   <script src="pixi.js"></script>
@@ -210,13 +211,13 @@ window.onscroll=grow
   </div>
 
   <div class="row">
-    <h2>Games</h2>
+    <h2>Software</h2>
     <div id="Carousel1" class="carousel slide">
       <ol class="carousel-indicators">
           <li data-target="#Carousel1" data-slide-to="0" class="active"></li>
           <li data-target="#Carousel1" data-slide-to="1"></li>
           <li data-target="#Carousel1" data-slide-to="2"></li>
-        </ol>  
+        </ol>
             <!-- Carousel items -->
         <div class="carousel-inner">
           <div class="item active">
@@ -229,6 +230,7 @@ window.onscroll=grow
             <h1>Knave <small> Javascript, Pixi.js, Game Design</small></h1>
             <p>All art and programming for Knave was done by Brandon over the course of a year. Knave is an Idle-RPG-Adventure game with almost 50 levels, different playable races, dozens of adorable monsters and a leveling system. </p>
             <a href="https://github.com/malceore/knave">Source</a>
+            |
             <a style="margin-left:10px" href="http://www.newgrounds.com/portal/view/679756">Demo</a>
           </div>
         </div><!--.row-->
@@ -237,14 +239,36 @@ window.onscroll=grow
       <div class="item">
               <div class="row">
           <div class="col-sm-6">
+            <a href="res/abomhim_4.png"><img src="res/voice_2.png"></img></a>
+            <a href="res/abomhim_1.png"><img src="res/voice_1.jpg"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Voice Activation <small>Python, Networking</small></h1>
+            <p>
+		Runner up in Instructable.com's Voice Activation contest, Brandon created documenation and helpful scripts on
+		Pocketshinx, a cutting edge Text-to-Speech Library. He also created a Twisted Python websocket service and example
+		clients that anyone can use to create a self hosted alternative to Google Assistant or Alexa.
+	    </p>
+            <a href="https://www.instructables.com/id/Introduction-to-Pocketsphinx-for-Voice-Controled-A/">Link</a>
+	    |
+            <a href="https://github.com/malceore/whisper">Source</a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+       
+      <div class="item">
+          <div class="row">
+          <div class="col-sm-6">
             <a href="res/abomhim_4.png"><img src="res/abomhim_4.png"></img></a>
             <a href="res/abomhim_1.png"><img src="res/abomhim_1.png"></img></a>
           </div>
           <div class="col-sm-6">
             <h1>Abominable <small>Python, 3D Models, Panda3D</small></h1>
-            <p>3D Platforming game made for a semester long Game Design course. Worked in a group of
+            <p>
+	      3D Platforming game made for a semester long Game Design course. Worked in a group of
               five using weekly Agile Sprints and a Scrum backlog. Brandon assisted in
-              Programming and all visuals including. The class was taught by Dr. Brian Ladd who worked for Epic Games.</p>
+              Programming and all visuals including. The class was taught by Dr. Brian Ladd who worked for Epic Games.
+	    </p>
             <a href="https://github.com/tbackus127/AbominableSnowmanGame">Source</a>
           </div>
         </div><!--.row-->
@@ -270,6 +294,7 @@ window.onscroll=grow
       </div><!--.Carousel-->
   </div>
 
+  <!--
   <div class="row">
     <h2>Websites</h2>
     <div id="Carousel2" class="carousel slide">
@@ -278,8 +303,6 @@ window.onscroll=grow
           <li data-target="#Carousel2" data-slide-to="1"></li>
           <li data-target="#Carousel2" data-slide-to="2"></li>
       </ol>
-       
-      <!-- Carousel items -->
       <div class="carousel-inner">
       <div class="item active">
         <div class="row">
@@ -294,8 +317,8 @@ window.onscroll=grow
               convention hosted by SUNY Potsdam and hosting two-hundred people annually.</p>
             <a href="http://www2.potsdam.edu/bearcon/"> Link </a>
           </div>
-        </div><!--.row-->
-      </div><!--.item-->
+        </div>
+      </div>
 
       <div class="item">
         <div class="row">
@@ -308,8 +331,8 @@ window.onscroll=grow
             <p>A full-stack mock website that sells Quadcopters and their accessories. Brandon built it in two weeks as part of an advanced databases course. It uses PHP and MYSQL to query the databases, track users and their purchases.</p>
             <a href="https://github.com/malceore/coptercentral"> Source </a>
           </div>
-        </div><!--.row-->
-      </div><!--.item-->
+        </div>
+      </div>
 
       <div class="item">
         <div class="row">
@@ -322,14 +345,15 @@ window.onscroll=grow
             <p>Brandon worked with two clients at Hospice and Palative Care to design a modern and user friendly site for their Swim a Mile for Hospice charity event. Learned to use Bootstrap for webdesign and integrated Hospice's swimmer database.</p>
             <a href="http://www.swimamileforhospice.org/"> Link </a>
           </div>
-        </div><!--.row-->
-      </div><!--.item-->
+        </div>
+      </div>
 
-      </div><!--.carousel-inner-->
+      </div>
         <a data-slide="prev" href="#Carousel2" class="left carousel-control">‹</a>
         <a data-slide="next" href="#Carousel2" class="right carousel-control">›</a>
-      </div><!--.Carousel-->
+      </div>
   </div>
+  -->
 
   <div class="row">
     <h2>Projects</h2>
@@ -339,6 +363,7 @@ window.onscroll=grow
           <li data-target="#Carousel3" data-slide-to="0" class="active"></li>
           <li data-target="#Carousel3" data-slide-to="1"></li>
           <li data-target="#Carousel3" data-slide-to="2"></li>
+          <li data-target="#Carousel3" data-slide-to="3"></li>
       </ol>
 
       <!-- Carousel items -->
@@ -350,14 +375,15 @@ window.onscroll=grow
             <a href="res/webapp_2.jpg"> <img src="res/webapp_2.jpg"></img></a>
           </div>
           <div class="col-sm-6">
-            <h1>Web-App Controlled Lights <small> Python, Arduinos</small></h1>
+            <h1>Web-app Controlled Lights<small> IoT, Python, Arduinos</small></h1>
             <p>
               Brandon created a webserver from scratch using Python's Twisted networking library
               including a web API for extensibility. The project made use of writing serial commands
               via usb to an arduino that controlled an outlette box of relays.
            </p>
            <a href="http://www.instructables.com/id/Web-app-Controlled-Lighting/"> Link </a>
-           <a href="https://gist.github.com/malceore/3dd520347bd108eb82e1f02dfbeeca5f"> Source </a>
+           |
+	   <a href="https://gist.github.com/malceore/3dd520347bd108eb82e1f02dfbeeca5f"> Source </a>
          </div>
         </div><!--.row-->
       </div><!--.item-->
@@ -375,8 +401,7 @@ window.onscroll=grow
                own nylon material linear-actuators at home using common fishing line. So that others
                could do the same he produced a tutorial linked below.
             </p>
-            <a
-              href="http://www.instructables.com/id/Fabricating-Fishing-Line-Artificial-Muscle-at-Home/"> Link </a>
+            <a href="http://www.instructables.com/id/Fabricating-Fishing-Line-Artificial-Muscle-at-Home/"> Link </a>
           </div>
         </div><!--.row-->
       </div><!--.item-->
@@ -395,7 +420,25 @@ window.onscroll=grow
               and correct course for objects only using the Worm's brain.
            </p>
            <a href="https://www.youtube.com/watch?v=g1PlTrWB6-Y"> Link </a>
-           <a style="margin-left:10px;" href="https://github.com/malceore/connectbot"> Source </a>
+           |
+	   <a style="margin-left:10px;" href="https://github.com/malceore/connectbot"> Source </a>
+          </div>
+        </div><!--.row-->
+      </div><!--.item-->
+      <div class="item">
+        <div class="row">
+          <div class="col-sm-6">
+            <a href="res/aquaponics_1.jpeg"> <img src="res/aquaponics_1.jpeg"></img> </a>
+            <a href="res/aquaponics_2.png"> <img src="res/aquaponics_2.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Aquaponics<small> Science</small></h1>
+           <p>
+	      Mimicing the natural flow of the Nitrogen cycle, Aquaponics is a sustainable soiless
+	      growing method. Fish waste is converted into nutrients for plants who clean the water
+	      for the fish. Brandon maintained multiple hoddy setups where he successfully grew
+	      tomatoes, peppers, mint and basil.
+           </p>
           </div>
         </div><!--.row-->
       </div><!--.item-->
@@ -414,7 +457,6 @@ window.onscroll=grow
       <ol class="carousel-indicators">
           <li data-target="#Carousel4" data-slide-to="0" class="active"></li>
           <li data-target="#Carousel4" data-slide-to="1"></li>
-          <li data-target="#Carousel4" data-slide-to="2"></li>
       </ol>
 
       <!-- Carousel items -->
@@ -426,7 +468,7 @@ window.onscroll=grow
             <a href="res/dms_2.jpg"> <img src="res/dms_2.jpg"></img></a>
           </div>
           <div class="col-sm-6">
-            <h1>LEGIT Mentoring <small> Python, Arduinos</small></h1>
+            <h1>LEGIT Mentoring <small>HTML/CSS, Javascript</small></h1>
             <p>
               Brandon through Liberty Enabling Girls in Technology(LEGIT) mentored students in after school 
 	 	programming club. He facilitated lessons and taught students basic website design skills.
