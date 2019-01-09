@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
   	<meta name="Author" content="brandon T. Wood malceore portfolio game design programming blog proffesional">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>brandon's | blog</title>
         <script src="./blog.js"></script>
@@ -20,12 +21,16 @@
 			min-height:800px;
 		}
 		section{
-			padding:2em;
+			padding: 2em;
 			float: left;
-                        width: 75%;
+                        width: 60%;
                         border: 0px;
                         height: 100%;
-			min-height:800px;
+			min-height: 800px;
+			font-size: 17px;
+			text-align: justify;
+			text-justify: inter-word;
+			font-family: 'Lato', sans-serif;
                 }
 		footer{
 			width:100%;
@@ -33,7 +38,12 @@
 			text-align: center;
 			padding:1em;
 		}
-
+		#spacer{
+			float:left;
+			width:15%;
+			border:0px;
+			min-height:800px;
+		}
 	</style>
 </head>
 <body>
@@ -50,9 +60,7 @@
 			<ul>
 				<li><a href="http://malceore.github.io/">Personal Site</a></li>
   				<li><a href="https://github.com/malceore">Github</a></li>
-                                <li><a href="https://plus.google.com/u/0/110004456145199008489">Google+</a></li>
                                 <li><a href="https://www.linkedin.com/in/brandon-wood-3b8412b9/">Linkedin</a></li>
-
   				<!--<li><a href="https://www.youtube.com/channel/UC4-nL9qWVJ8qw4Q0gv8tYcg?view_as=subscriber" >Youtube</a></li>-->
 			</ul>
 			<!--
@@ -74,10 +82,13 @@
 		<div id="notice"></div>
 	</section>
 
+	<div id="spacer"> </div> <br>
+
 	<footer>
 		<br>
 		Created by Brandon T. Wood @ 2018
 	</footer>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', app.init);
 	</script>

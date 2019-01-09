@@ -85,12 +85,17 @@ const app = function (){
 		posts.forEach(function (post) {
 			const article = document.createElement('article');
 			article.innerHTML = `
-				<h1>${post.title}</h1>
-				<div class="article-details">
-					<div>By ${post.author} on ${_formatDate(post.timestamp)}</div>
-					<div>Posted in ${post.category}</div>
+				<div id="posts">
+					<br>
+					<h2>${post.title}</h2>
+					<div class="article-details">
+						<div>By ${post.author} on ${_formatDate(post.timestamp)}</div>
+						<br>
+						<div>Posted in ${post.category}</div>
+						<br>
+					</div>
+					${_formatContent(post.content)}
 				</div>
-				${_formatContent(post.content)}
 			`;
 			page.container.appendChild(article);
 		});
