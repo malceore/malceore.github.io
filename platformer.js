@@ -73,7 +73,7 @@ function init(){
     this.position.y += 3;
   }
   desc2.click = function(e){
-    window.location='https://docs.google.com/document/d/1IUCBXh82fUx7siUjwITJhSLKyNOS7PmW9SUqAWnQ7jM/pub';
+    window.location='https://docs.google.com/document/d/1L6Fu4ozanLpionomCXgJKu2UHPVksAV6scD4RxUeUWc/pub';
   }
   stage.addChild(desc2);
 

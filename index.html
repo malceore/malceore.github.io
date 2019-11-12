@@ -114,6 +114,10 @@ background: #428bca;
   </style>
 
 <script>
+window.onload = function() {
+  init();
+};
+
 var sem = 0;
 //Max 200 is mastered
 var skills = [
@@ -155,7 +159,8 @@ window.onscroll=grow
 </script>
 
 </head>
-<body onload="init()">
+<!--<body onload="init()">-->
+<body>
   <div class="center">
     <canvas id="game">
       You can't run this game yo.
@@ -246,7 +251,7 @@ window.onscroll=grow
             <h1>Voice Activation <small>Python, Networking</small></h1>
             <p>
 		Runner up in Instructable.com's Voice Activation contest, Brandon created documenation and helpful scripts on
-		Pocketshinx, a cutting edge Text-to-Speech Library. He also created a Twisted Python websocket service and example
+		Pocketshinx, a Text-to-Speech Library. He also created Whisper, a Python websocket service and example
 		clients that anyone can use to create a self hosted alternative to Google Assistant or Alexa.
 	    </p>
             <a href="https://www.instructables.com/id/Introduction-to-Pocketsphinx-for-Voice-Controled-A/">Link</a>
@@ -255,7 +260,7 @@ window.onscroll=grow
           </div>
         </div><!--.row-->
       </div><!--.item-->
-       
+     <!--
       <div class="item">
           <div class="row">
           <div class="col-sm-6">
@@ -271,9 +276,25 @@ window.onscroll=grow
 	    </p>
             <a href="https://github.com/tbackus127/AbominableSnowmanGame">Source</a>
           </div>
-        </div><!--.row-->
-      </div><!--.item-->
-       
+        </div>
+      </div>
+       -->
+      <div class="item">
+          <div class="row">
+          <div class="col-sm-6">
+            <a href="res/screenshot_tune.png"><img src="res/screenshot_tune.png"></img></a>
+            <a href="res/screenshot_tune_2.png"><img src="res/screenshot_tune_2.png"></img></a>
+          </div>
+          <div class="col-sm-6">
+            <h1>Tune <small>Golang, Networking</small></h1>
+            <p>
+               In order to learn the the Go language Brandon made a simple Youtube Play back syncing service
+		that users can self host! It has simple playback syncing and ability to queue videos.
+	    </p>
+            <a href="https://github.com/malceore/tune">Source</a>
+          </div>
+        </div>
+      </div>
       <div class="item">
         <div class="row">
           <div class="col-sm-6" style="height:185px;">
