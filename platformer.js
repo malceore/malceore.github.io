@@ -145,7 +145,7 @@ function init(){
   platform[1].drawRoundedRect(0, 0, 480, 55, 5);
   stage.addChild(platform[1]);
 
-  var text1 = new PIXI.Text("I am currently a Platform Developer and DevOps Engineer for\nLiberty Mutual's Enterprise Technology Services division.", {font:"16px Arial", fill:"0x333333"});
+  var text1 = new PIXI.Text("I am currently a Senior Software Developer and DevOps \nEngineer for Liberty Mutual's Hosting Services.", {font:"16px Arial", fill:"0x333333"});
   text1.position.y = 158;
   text1.position.x = 415;
   stage.addChild(text1);
